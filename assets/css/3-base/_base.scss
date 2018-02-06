@@ -1,0 +1,8 @@
+/* Base Styles -------------------- */
+body {
+  background-image: url($path-image + '/Main_Page.jpg');
+  background-size: 1440px;
+}
+.bordered {
+  border: 1px dashed #ff994b;
+}
