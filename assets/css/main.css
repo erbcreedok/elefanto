@@ -8599,24 +8599,62 @@ html {
     -ms-flex-item-align: stretch !important;
         align-self: stretch !important; } }
 
+@font-face {
+  font-family: 'Geometria';
+  src: local("Geometria-Heavy"), url("../fonts/Geometria/Geometria-Heavy.woff2") format("woff2"), url("../fonts/Geometria/Geometria-Heavy.woff") format("woff"), url("../fonts/Geometria/Geometria-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Geometria';
+  src: local("Geometria-Medium"), url("../fonts/Geometria/Geometria-Medium.woff2") format("woff2"), url("../fonts/Geometria/Geometria-Medium.woff") format("woff"), url("../fonts/Geometria/Geometria-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Geometria';
+  src: local("Geometria"), url("../fonts/Geometria/Geometria.woff2") format("woff2"), url("../fonts/Geometria/Geometria.woff") format("woff"), url("../fonts/Geometria/Geometria.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Geometria';
+  src: local("Geometria-Italic"), url("../fonts/Geometria/Geometria-Italic.woff2") format("woff2"), url("../fonts/Geometria/Geometria-Italic.woff") format("woff"), url("../fonts/Geometria/Geometria-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Geometria';
+  src: local("Geometria-Bold"), url("../fonts/Geometria/Geometria-Bold.woff2") format("woff2"), url("../fonts/Geometria/Geometria-Bold.woff") format("woff"), url("../fonts/Geometria/Geometria-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
 /* Custom Mixins -------------------- */
 /* Base Styles -------------------- */
+html {
+  font-size: 10px; }
+
 body {
-  background-image: url("../img/Main_Page.jpg");
-  background-size: 1440px; }
+  background: url("../img/Main_Page.jpg") no-repeat;
+  background-size: 1440px;
+  background-position-x: center;
+  font-size: 1.4rem;
+  font-family: 'Geometria', sans-serif; }
 
 .bordered {
   border: 1px dashed #ff994b; }
 
 .main-container {
-  padding: 40px 40px 0 40px;
+  padding: 40px 40px 0 321px;
   max-width: 1440px;
   position: relative;
   margin: 0 auto; }
 
 .nav-container {
   width: 281px;
-  padding-right: 20px; }
+  padding-right: 20px;
+  position: absolute;
+  left: 40px; }
 
 .section-container {
   width: 100%; }

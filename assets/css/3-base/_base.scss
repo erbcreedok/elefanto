@@ -1,7 +1,13 @@
 /* Base Styles -------------------- */
+html {
+  font-size: 10px;
+}
 body {
-  background-image: url($path-image + '/Main_Page.jpg');
+  background: url($path-image + '/Main_Page.jpg') no-repeat;
   background-size: 1440px;
+  background-position-x: center;
+  font-size: 1.4rem;
+  font-family: 'Geometria', sans-serif;
 }
 .bordered {
   border: 1px dashed #ff994b;
