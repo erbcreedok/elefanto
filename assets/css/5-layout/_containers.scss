@@ -1,16 +1,67 @@
 .main-container {
-  padding: 40px 40px 0 40px+281px;
-  max-width: 1440px;
+  padding: 0;
+  max-width: 144rem;
   position: relative;
   @extend .row;
   margin: 0 auto;
 }
-.nav-container {
-  width: 281px;
-  padding-right: 20px;
-  position: absolute;
-  left: 40px;
+.nav-wrapper {
+  position: fixed;
+  z-index: 100;
+}
+.section-wrapper {
+  width: 100%;
 }
 .section-container {
-  width: 100%;
+  max-width: 93.1rem;
+  margin: 0 auto;
+}
+.section-padding, .section-padding-low {
+  padding: 2rem;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+.section-padding-low {
+  margin-bottom: 2rem;
+}
+.rounded-box {
+  @include prefix((box-shadow: 0 0 20px rgba(0,0,0,0.047)), webkit moz);
+}
+@media (max-width: 767px) {
+  body {
+    padding-top: 6rem;
+  }
+  .nav-wrapper {
+    @include nav-top();
+  }
+}
+@media (min-width: 768px) {
+  .main-container {
+    padding: 1rem 1rem 0 1rem+28.1rem;
+  }
+  .nav-wrapper {
+    width: 28.1rem;
+    padding-right: 20px;
+    margin-left: -28.1rem;
+    .nav {
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  }
+  .section-padding {
+    padding-top: 7.3rem;
+    padding-bottom: 7.3rem;
+  }
+  .section-padding-low {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .rounded-box {
+    border-radius: 1rem;
+  }
+}
+@media (min-width: 1050px) {
+  .main-container {
+    padding: 4rem 4rem 0 4rem+28.1rem;
+  }
 }

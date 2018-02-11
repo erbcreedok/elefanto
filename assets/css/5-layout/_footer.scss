@@ -1,0 +1,31 @@
+footer {
+  border-top: 1px solid $lightergray;
+  padding: 4rem 2rem;
+  font-size: 1.2rem;
+  color: $darkblue;
+  a {
+    color: inherit;
+    @include prefix((transition: 400ms), webkit ms)
+  }
+  a:hover, a:active, a:focus  {
+    color: $red;
+    text-decoration: none;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .social-links {
+    font-size: 1.8rem;
+    color: #777777;
+    margin: 0 -1rem;
+    li {
+      margin: 0 1rem;
+    }
+  }
+  ul {
+    margin: 0 -1.5rem;
+    li {
+      margin: 0 1.5rem;
+    }
+  }
+}

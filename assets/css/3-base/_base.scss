@@ -3,12 +3,93 @@ html {
   font-size: 10px;
 }
 body {
-  background: url($path-image + '/Main_Page.jpg') no-repeat;
-  background-size: 1440px;
-  background-position-x: center;
   font-size: 1.4rem;
+  font-weight: normal;
   font-family: 'Geometria', sans-serif;
 }
-.bordered {
-  border: 1px dashed #ff994b;
+a.unstyled:hover {
+  color: inherit;
+}
+h3 {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+ul.unstyled {
+  padding: 0;
+  list-style-type: none;
+}
+.font-big {
+  font-size: 2rem;
+}
+.medium {
+  font-weight: 500;
+}
+.bold {
+  font-weight: bold;
+}
+.extrabold {
+  font-weight: 800;
+}
+.heavy {
+  font-weight: 900;
+}
+.red-color {
+  color: $red!important;
+}
+.gray-color {
+  color: $gray!important;
+}
+.darkblue-color {
+  color: $darkblue!important;
+}
+.main-heading {
+  font-size: 4rem;
+}
+.btn {
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  font-size: 1.4rem;
+  height: 4.5rem;
+  padding: 0 15px;
+  font-weight: 500;
+  @include prefix((border-radius: 0.4rem), webkit moz);
+  min-width: 18rem;
+  &.btn-primary {
+    background: $red;
+    border-color: transparent;
+    &:not([disabled]):not(.disabled):hover {
+      border-color: transparent;
+      background: $red - #080808;
+      @include prefix((box-shadow: 0 0 0.4rem 0 rgba($red, 0.75)), webkit moz);
+    }
+    &:focus, &.focus, &:not([disabled]):not(.disabled):active, &:not([disabled]):not(.disabled).active  {
+      border-color: transparent;
+      background: $red - #222;
+      outline: 0;
+      @include prefix((box-shadow: 0 0 0.1rem 0.3rem rgba($red, 0.25)), webkit moz);
+    }
+  }
+  &[disabled] {
+    background: $lightgray;
+    color: $grey;
+    border-color: transparent;
+  }
+}
+.title-type-red{
+  padding-left: 4rem;
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 25px;
+    height: 0.2rem;
+    background: $red;
+  }
+}
+.section-heading {
+  line-height: 2.4rem;
 }

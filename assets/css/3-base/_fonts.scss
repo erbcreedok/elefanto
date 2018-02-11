@@ -1,0 +1,74 @@
+//Font - regular (400)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria'), url($path-font-main + 'Geometria.woff2') format('woff2'),
+  url($path-font-main + 'Geometria.woff') format('woff'),
+  url($path-font-main + 'Geometria.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+//Font - ExtraLight (200)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria ExtraLight'), url($path-font-main + 'Geometria-ExtraLight.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-ExtraLight.woff') format('woff'),
+  url($path-font-main + 'Geometria-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+//Geometria - Normal Italic (400)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Italic'), url($path-font-main + 'Geometria-Italic.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-Italic.woff') format('woff'),
+  url($path-font-main + 'Geometria-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+//Geometria - Medium (500)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Medium'), url($path-font-main + 'Geometria-Medium.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-Medium.woff') format('woff'),
+  url($path-font-main + 'Geometria-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+//Geometria - Bold (700)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Bold'), url($path-font-main + 'Geometria-Bold.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-Bold.woff') format('woff'),
+  url($path-font-main + 'Geometria-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+//Geometria - ExtraBold (800)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria ExtraBold'), url($path-font-main + 'Geometria-ExtraBold.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-ExtraBold.woff') format('woff'),
+  url($path-font-main + 'Geometria-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+//Geometria - Heavy (900)
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Heavy'), url($path-font-main + 'Geometria-Heavy.woff2') format('woff2'),
+  url($path-font-main + 'Geometria-Heavy.woff') format('woff'),
+  url($path-font-main + 'Geometria-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'icomoon';
+  src:  url($path-fonts + '/icons/icomoon.eot?1jcwml');
+  src:  url($path-fonts + '/icons/icomoon.eot?1jcwml#iefix') format('embedded-opentype'),
+  url($path-fonts + '/icons/icomoon.ttf?1jcwml') format('truetype'),
+  url($path-fonts + '/icons/icomoon.woff?1jcwml') format('woff'),
+  url($path-fonts + '/icons/icomoon.svg?1jcwml#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@import "../../fonts/icons/icomoon";

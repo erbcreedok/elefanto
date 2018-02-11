@@ -1,0 +1,180 @@
+.nav {
+  border: 1px solid $lightgray;
+  background: white;
+  display: block;
+  z-index:100;
+  hr {
+    margin: 0;
+  }
+
+  ul.navigation-panel {
+    padding-top: 1px;
+    margin: 0.5rem 0 -1rem;
+  }
+}
+.navigation-panel {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  li>.nav-left-padding {
+    min-height: 25px;
+    padding-top: 2px;
+    position: relative;
+  }
+  li>.nav-left-padding:hover, li>.nav-left-padding.hover, li.active>.nav-left-padding{
+    background: $extralightgray;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -1px;
+      background: $lightgrey;
+      width: 3px;
+    }
+  }
+  li.active>.nav-left-padding {
+    a {color: $red}
+    &:before {
+      width: 3px;
+      background: $red;
+    }
+  }
+  &>li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &>.nav-left-padding {
+      a {
+        color: $darkviolet;
+      }
+    }
+  }
+  .navigation-panel-child {
+    margin-bottom: -5px;
+    &>li {
+      padding-top: 5px;
+      margin-bottom: -1px;
+      &>.nav-left-padding {
+        padding-left: 4.9rem;
+      }
+      a {
+        font-size: 1.2rem;
+        color: $grey;
+      }
+      .nav-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.nav-icon {
+  width: 24px;
+  height: 20px;
+}
+.nav-section {
+  padding-top: 2.6rem;
+  padding-bottom: 2.6rem;
+  position: relative;
+}
+.nav-top-padding {
+  padding-top: 2.6rem;
+}
+.nav-top-padding {
+  padding-bottom: 2.6rem;
+}
+.nav-left-padding {
+  padding-left: 2.7rem;
+  position: relative;
+}
+.nav-container {
+  padding-left: 2.7rem;
+  padding-right: 2.7rem;
+  position: relative;
+}
+.nav-brand, .nav-brand:hover {
+  @extend .d-inline-flex;
+  margin: 0 0 1px -1px;
+  font-size: 2rem;
+  color: $darkviolet;
+  text-decoration: none;
+  img {
+    height: 2.4rem;
+    margin-right: 1rem;
+  }
+}
+.nav-links {
+  a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+  }
+  a:after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    opacity: 0;
+    background: $mediumgray;
+    @include prefix((transition: 200ms), webkit moz ms o)
+  }
+  a:hover:after {
+    opacity: 1;
+  }
+
+  font-size: 1.2rem;
+  margin-bottom: -3px;
+  color: $mediumgray;
+  line-height: 2.6rem;
+  span.icomoon {
+    margin-right: 2px;
+  }
+}
+.nav-top {
+  @include nav-top();
+}
+.nav-open-toggle {
+  $time: .2s;
+  position: absolute;
+  right: 3.2rem;
+  top: 2rem;
+  display: none;
+  @include prefix((transition: $time), webkit moz ms o);
+  span.hamburger {
+    width: 12px;
+    height: 12px;
+    display: block;
+    @include prefix((transition: transform $time), webkit moz ms o);
+  }
+  span.hamburger:before, span.hamburger:after, span.hamburger span {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: black;
+    margin: 3px 0;
+    @include prefix((transition: transform $time), webkit moz ms o);
+  }
+}
+.nav-opened {
+  .nav-open-toggle {
+    top: 1.7rem;
+    span.hamburger {
+      @include prefix((transform: rotate(45deg)), webkit moz ms o)
+    }
+    span.hamburger span {
+      width: 22px;
+      height: 3px;
+      @include prefix((transform: rotate(90deg) translateX(-1px)), webkit moz ms o)
+    }
+    span.hamburger:before {
+      width: 22px;
+      height: 3px;
+      @include prefix((transform: translateY(5px)), webkit moz ms o)
+    }
+    span.hamburger:after {
+      opacity: 0;
+    }
+  }
+}

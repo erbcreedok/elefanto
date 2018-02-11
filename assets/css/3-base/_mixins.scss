@@ -1,1 +1,80 @@
 /* Custom Mixins -------------------- */
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+}
+
+@mixin nav-top() {
+  $time: .3s;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  overflow: hidden;
+  @include prefix((transition: $time, box-shadow: 0 5px 10px rgba(0,0,0,0.047)), webkit moz ms o);
+  &.nav-opened {
+    height: 100vh;
+  }
+  .nav-header {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    height: 6rem;
+    z-index:2;
+    position: relative;
+    background: white;
+    hr {
+      display: none;
+    }
+  }
+  .nav-body {
+    height: 100vh;
+    margin-top: -30px;
+    padding-bottom: 20px;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .nav-left-padding {
+    padding-left: 3.4rem;
+  }
+  .nav-container {
+    padding-left: 3.4rem;
+    padding-right: 3.4rem;
+  }
+  .navigation-panel {
+    &>li>.nav-left-padding {
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 2rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+    &>li.active>.nav-left-padding {
+      background: none;
+      &:before {
+        background: none;
+      }
+    }
+    .navigation-panel-child{
+      margin-bottom: .5rem;
+      &>li>.nav-left-padding {
+        a {
+          font-size: 1.44rem;
+          color: black;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .nav-open-toggle {
+    display: block;
+  }
+}

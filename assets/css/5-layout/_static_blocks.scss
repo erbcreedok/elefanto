@@ -1,0 +1,379 @@
+.steps-how-wrapper {
+  align-items: flex-start;
+  position: relative;
+  p {
+    margin: 0;
+  }
+  .steps-how {
+    width: 50%;
+    opacity: 1;
+    position: relative;
+    z-index:2;
+    height: 17.8rem;
+    &:nth-child(3) {
+      order: 4
+    }
+    &:nth-child(4) {
+      order: 3;
+    }
+  }
+  .steps-how-container {
+    width: 18.3rem;
+  }
+  .steps-how-num {
+    font-size: 4.8rem;
+    line-height: 4.6rem;
+    font-weight: 900;
+    color: $pink;
+    text-align: center;
+    position: relative;
+  }
+  .steps-how-circle {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    padding: 1px;
+    border: 3px solid $red;
+    margin: 0 auto 1.5rem;
+    background: #ffffff;
+    @include prefix((border-radius: 50%, box-shadow: 0 0 0 3px #ffffff), webkit moz);
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $red;
+      @include prefix((border-radius: inherit), webkit moz);
+    }
+  }
+  .steps-how-title {
+    text-align: center;
+    line-height: 1.4rem;
+    color: $darkblue;
+  }
+  .steps-how-path {
+    top: 5.8rem;
+    left: 8.5rem;
+    bottom: 0;
+    position: absolute;
+    z-index:1;
+    right: 0;
+    overflow: hidden;
+    svg {
+      right: 0;
+      position: absolute;
+    }
+    .line-mask {
+      stroke: white;
+      stroke-width: 5;
+    }
+    .main-line {
+      stroke: $red;
+      stroke-dasharray: 13 13 13;
+    }
+    .line-mask {
+      stroke-dasharray: 1100;
+      stroke-dashoffset: -1100;
+    }
+  }
+  &.animation-start {
+    .steps-how-path .line-mask{
+      animation: shorten-path 3s .5s ease-in both;
+    }
+    .steps-how:nth-child(1) {
+      animation: fadein 200ms .2s ease-in both;
+    }
+    .steps-how:nth-child(2) {
+      animation: fadein 200ms 2s ease-in both;
+      transition: 150ms .9s;
+    }
+    .steps-how:nth-child(3) {
+      animation: fadein 200ms 3s ease-in both;
+      transition: 150ms 1.4s;
+    }
+    .steps-how:nth-child(4) {
+      animation: fadein 200ms 3.5s linear both;
+    }
+  }
+}
+
+.tabs-container {
+  @extend ul.unstyled;
+  position: relative;
+  .tab-underline {
+    position: absolute;
+    height: 1px;
+    bottom: -2px;
+    background: #f13453;
+    margin: 0;
+    left: 0;
+    @include prefix((transition: 200ms ease-in), webkit moz ms o);
+  }
+}
+.tab {
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  border-bottom: 2px solid #E7E7E7;
+  font-weight: 500;
+  padding: 0 1rem;
+  cursor: pointer;
+  &.active {
+    border-color: $red;
+  }
+  .tab-icon {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    img {
+      margin-top: -5px;
+    }
+  }
+  .tab-title {
+  }
+}
+
+.media-icon {
+  @extend .d-flex;
+  .icon-square {
+    margin: 0.2rem 1.5rem 0.1rem 0.1rem;
+  }
+  p {
+    max-width: 20rem;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
+.media-icons-wrapper {
+  .media-icon {
+    margin-bottom: 3.7rem;
+  }
+}
+.icon-square {
+  height: 4.9rem;
+  width: 4.9rem;
+  @include prefix((border-radius: 0.4rem), webkit moz);
+  background: #ffffff;
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .align-items-center;
+  font-size: 1.8rem;
+}
+
+.form-wrapper {
+  .form-heading {
+    margin-bottom: 3.2rem;
+  }
+}
+.form-heading {
+  font-size: 2rem;
+  line-height: 2rem;
+  color: $darkblue;
+}
+.form-radio-images {
+  margin: -1rem;
+  max-width: 48rem;
+  .form-radio-image {
+    margin: 1rem;
+  }
+}
+.form-radio-image {
+  width: 14rem;
+  height: 10.7rem;
+  text-align: center;
+  background: white;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  @include prefix((box-shadow: 0 0 2rem #E7E7E780, border-radius: 1rem, transition: 200ms), webkit moz);
+  .form-radio-image-icon {
+    height: 3rem;
+    text-align: center;
+    margin: 2.9rem 0 0.9rem;
+    span {
+      font-size: 3rem;
+    }
+  }
+  p {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  &:hover, &.hover, &.active {
+    border: 1px solid $red;
+    @include prefix((box-shadow: 0 0 0.4rem $red), webkit moz);
+    p {
+      color: $red;
+    }
+  }
+}
+.form-body {
+  .form-result-wrapper {
+    margin: 0 7.7rem;
+  }
+}
+
+.progress-circle {
+  $time: 500ms;
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top:0; left: 0; right: 0; bottom: 0;
+    border: 4px solid $lightergray;
+    @include prefix((border-radius: 50%), webkit moz);
+  }
+  .progress-circle-side {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      border: 5px solid $red;
+      @include prefix((border-radius: 50%, transform: rotate(-45deg)), webkit moz);
+    }
+  }
+  .progress-circle-left {
+    @extend .progress-circle-side;
+    left: 0;
+    &:before {
+      left: 0;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      @include prefix((transition: $time $time), webkit moz);
+    }
+  }
+  .progress-circle-right {
+    @extend .progress-circle-side;
+    right: 0;
+    &:before {
+      right: 0;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      @include prefix((transition: $time), webkit moz);
+    }
+  }
+
+  &.progress-circle-25 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(45deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(-45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-50 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(-45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-75 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-100 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+  }
+
+}
+.progress-circle-svg {
+  $time: 1s;
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    .progress-circle-rail {
+      stroke: $lightergray;
+    }
+    .progress-circle-bar {
+      stroke: $red;
+      stroke-dasharray: 364;
+      stroke-dashoffset: 364;
+      @include prefix((transform: rotate(-90deg), transform-origin: center, transition: $time), webkit moz ms o );
+    }
+  }
+
+  &.progress-circle-25 .progress-circle-bar {
+    stroke-dashoffset: 273;
+  }
+  &.progress-circle-50 .progress-circle-bar {
+    stroke-dashoffset: 182;
+  }
+  &.progress-circle-75 .progress-circle-bar {
+    stroke-dashoffset: 91;
+  }
+  &.progress-circle-100 .progress-circle-bar {
+    stroke-dashoffset: 0;
+  }
+}
+.progress-circle-data {
+  color: $grey;
+  font-size: 1.2rem;
+  margin-top: 2.4rem;
+  p {
+    margin: 0;
+  }
+  .progress-circle-percent {
+    font-size: 3rem;
+    font-weight: 500;
+    color: $red;
+    line-height: 1.5rem;
+    span {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.form-group {
+  max-width: 55rem;
+  .input-group {
+    display: block;
+    label {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $red;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    input, textarea {
+      display: block;
+      height: 3rem;
+      border: none;
+      border-bottom: 1px solid $grey;
+      outline: none;
+      width: 100%;
+      margin-bottom: 3rem;
+      resize: none;
+      &::placeholder {
+        color: $mediumgrey;
+        font-weight: 200;
+      }
+    }
+  }
+}
