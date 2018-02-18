@@ -48,10 +48,17 @@
       a {
         color: $darkviolet;
       }
+      span.icomoon.icon-triangle-down {
+        display: inline-block;
+        transition: 300ms;
+      }
     }
   }
   .navigation-panel-child {
     margin-bottom: -5px;
+    max-height: 0;
+    transition: 300ms;
+    overflow: hidden;
     &>li {
       padding-top: 5px;
       margin-bottom: -1px;
@@ -65,6 +72,14 @@
       .nav-icon {
         margin-right: 8px;
       }
+    }
+  }
+  &>li.nav-opened {
+    &>.nav-left-padding span.icomoon.icon-triangle-down {
+      transform: rotate(-540deg);
+    }
+    .navigation-panel-child {
+      max-height: 20rem;
     }
   }
 }
@@ -157,7 +172,7 @@
     @include prefix((transition: transform $time), webkit moz ms o);
   }
 }
-.nav-opened {
+.nav-wrapper.nav-opened {
   .nav-open-toggle {
     top: 1.7rem;
     span.hamburger {
@@ -176,5 +191,9 @@
     span.hamburger:after {
       opacity: 0;
     }
+  }
+  .navigation-panel li {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }

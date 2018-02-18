@@ -27,7 +27,7 @@
 .rounded-box {
   @include prefix((box-shadow: 0 0 20px rgba(0,0,0,0.047)), webkit moz);
 }
-@media (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   body {
     padding-top: 6rem;
   }
@@ -35,7 +35,7 @@
     @include nav-top();
   }
 }
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
   .main-container {
     padding: 1rem 1rem 0 1rem+28.1rem;
   }
@@ -44,7 +44,7 @@
     padding-right: 20px;
     margin-left: -28.1rem;
     .nav {
-      max-height: 90vh;
+      max-height: 99vh;
       overflow-y: auto;
     }
   }
@@ -60,7 +60,7 @@
     border-radius: 1rem;
   }
 }
-@media (min-width: 1050px) {
+@include media-breakpoint-up(xl) {
   .main-container {
     padding: 4rem 4rem 0 4rem+28.1rem;
   }

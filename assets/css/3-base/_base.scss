@@ -46,7 +46,6 @@ ul.unstyled {
   font-size: 4rem;
 }
 .btn {
-  @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
   font-size: 1.4rem;
@@ -93,3 +92,25 @@ ul.unstyled {
 .section-heading {
   line-height: 2.4rem;
 }
+
+.typewriter-single {
+  @include typewriter-single();
+}
+.typewriter-effect.typewriter-typing, .typewriter-effect.typewriter-cursor-blink {
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 2px;
+    margin: 0 0 -3px 10px;
+    background: $caret-color;
+  }
+}
+
+.fadein-bottom {
+  animation: fadein-bottom 300ms ease-in-out;
+}
+.fadeout-top {
+  animation: fadeout-top 300ms ease-in-out both;
+}
+

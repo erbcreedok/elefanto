@@ -77,22 +77,22 @@
     }
   }
   &.animation-start {
+    $path-duration: 2s;
+    $station-duration: .2s;
     .steps-how-path .line-mask{
-      animation: shorten-path 3s .5s ease-in both;
+      animation: shorten-path $path-duration .5s cubic-bezier(0, 0.45, 1, 0.55) both;
     }
     .steps-how:nth-child(1) {
-      animation: fadein 200ms .2s ease-in both;
+      animation: fadein $station-duration $station-duration ease-in both;
     }
     .steps-how:nth-child(2) {
-      animation: fadein 200ms 2s ease-in both;
-      transition: 150ms .9s;
+      animation: fadein $station-duration ($path-duration * 0.3333) ease-in both;
     }
     .steps-how:nth-child(3) {
-      animation: fadein 200ms 3s ease-in both;
-      transition: 150ms 1.4s;
+      animation: fadein $station-duration $path-duration ease-in both;
     }
     .steps-how:nth-child(4) {
-      animation: fadein 200ms 3.5s linear both;
+      animation: fadein $station-duration ($path-duration + .5s) linear both;
     }
   }
 }
@@ -150,6 +150,7 @@
 .media-icons-wrapper {
   .media-icon {
     margin-bottom: 3.7rem;
+    padding-right: .5rem;
   }
 }
 .icon-square {
@@ -169,19 +170,26 @@
   }
 }
 .form-heading {
+  .form-return-back-button {
+    font-size: 0.8em;
+    cursor: pointer;
+    display: inline-block;
+    padding-right: 5px;
+  }
   font-size: 2rem;
   line-height: 2rem;
   color: $darkblue;
 }
 .form-radio-images {
   margin: -1rem;
-  max-width: 48rem;
+  max-width: 63rem;
   .form-radio-image {
     margin: 1rem;
   }
 }
 .form-radio-image {
   width: 14rem;
+  max-width: 40%;
   height: 10.7rem;
   text-align: center;
   background: white;
@@ -211,8 +219,103 @@
   }
 }
 .form-body {
-  .form-result-wrapper {
-    margin: 0 7.7rem;
+
+  .progress-circle-svg {
+    margin-top: 4rem;
+  }
+
+  .form-submit-button {
+    margin-top: 5rem!important;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .form-result-wrapper {
+      margin-right: 7.7rem;
+    }
+  }
+}
+.form-groups {
+  position: relative;
+  .form-group-page {
+    $duration: 150ms;
+    $delay: 100ms;
+    position: absolute;
+    opacity: 0;
+    top:0;
+    left:0;
+    z-index:1;
+    &.form-group-now {
+      position: relative;
+      opacity: 1;
+      z-index:2;
+      .form-radio-image {
+        transition: margin $duration*3 ease-out, box-shadow 200ms, border 200ms;
+      }
+    }
+    &.form-group-next {
+      position: relative;
+      z-index: 3;
+      transform: translateX(200px);
+      opacity: 0;
+      animation: fadein-right $duration $delay ease-in forwards;
+      &.form-group-reverse {
+        transform: translateX(-200px);
+        animation: fadein-left $duration $delay ease-in forwards;
+        .form-radio-image {
+          margin-left: 1rem;
+        }
+      }
+      .form-radio-image {
+        margin-left: 1rem;
+      }
+    }
+    &.form-group-prev {
+      position: absolute;
+      opacity: 1;
+      z-index:2;
+      animation: fadeout-left $duration ease-out forwards;
+      &.form-group-reverse {
+        animation: fadeout-right $duration ease-out forwards;
+      }
+    }
+  }
+  .form-radio-images {
+    transform: scale(1);
+    transition: 100ms ease-out;
+    transform-origin: center 5rem;
+  }
+  .form-radio-images:active {
+    transform: scale(.9);
+  }
+}
+.form-group {
+  max-width: 55rem;
+  margin-right: 2rem;
+  margin-bottom: -3rem;
+  .input-group {
+    display: block;
+    label {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $red;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    input, textarea {
+      display: block;
+      height: 3rem;
+      border: none;
+      border-bottom: 1px solid $grey;
+      outline: none;
+      width: 100%;
+      margin-bottom: 3rem;
+      resize: none;
+      &::placeholder {
+        color: $mediumgrey;
+        font-weight: 200;
+      }
+    }
   }
 }
 
@@ -307,8 +410,13 @@
     width: 100%;
     height: 100%;
     position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     .progress-circle-rail {
       stroke: $lightergray;
+      @include prefix((transform: rotate(-90deg), transform-origin: center, transition: $time), webkit moz ms o );
     }
     .progress-circle-bar {
       stroke: $red;
@@ -317,7 +425,14 @@
       @include prefix((transform: rotate(-90deg), transform-origin: center, transition: $time), webkit moz ms o );
     }
   }
-
+  &.progress-circle-0 {
+    .progress-circle-bar {
+      stroke-dashoffset: 364;
+    }
+    .progress-circle-percent {
+      opacity: .5;
+    }
+  }
   &.progress-circle-25 .progress-circle-bar {
     stroke-dashoffset: 273;
   }
@@ -339,41 +454,15 @@
     margin: 0;
   }
   .progress-circle-percent {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: $red;
     line-height: 1.5rem;
-    span {
+    .progress-circle-percent-big {
+      font-size: 3rem;
+    }
+    .progress-circle-percent-small {
       font-size: 1.4rem;
-    }
-  }
-}
-
-.form-group {
-  max-width: 55rem;
-  .input-group {
-    display: block;
-    label {
-      display: block;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: $red;
-      text-transform: uppercase;
-      margin-bottom: 0;
-    }
-    input, textarea {
-      display: block;
-      height: 3rem;
-      border: none;
-      border-bottom: 1px solid $grey;
-      outline: none;
-      width: 100%;
-      margin-bottom: 3rem;
-      resize: none;
-      &::placeholder {
-        color: $mediumgrey;
-        font-weight: 200;
-      }
     }
   }
 }

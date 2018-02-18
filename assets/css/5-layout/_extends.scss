@@ -1,3 +1,24 @@
-html {
-  //min-width: 1440px;
+html.loading{
+  position: relative;
+  body {
+    opacity: 0;
+  }
+  &:before {
+    content: 'Привет :)';
+    position: absolute;
+    display: block;
+    width: 12rem;
+    padding-left: 4rem;
+    height: 4rem;
+    white-space: nowrap;
+    line-height: 4rem;
+    background: url( $path-image + '/elefanto.png') no-repeat left center;
+    background-size: contain;
+    font-size: 2rem;
+    font-weight: bold;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }

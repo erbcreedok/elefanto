@@ -4,11 +4,35 @@
   background: url($path-image + "/main.jpg") center -4rem;
   .heading-container {
     max-width: 53.8rem;
+    min-height: 31.7rem;
     padding: 5rem 0;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
   }
   .main-heading {
     line-height: 5rem;
     margin: 1.5rem 0 3rem;
+    .typewriter-effect {
+      position: relative;
+    }
+    .typewriter-effect:after {
+      height: 3rem;
+      margin: 0 -10px -3px 10px;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+  }
+  .typewriter-cursor-blink:after {
+    animation: blink-caret 1s step-end infinite;
+  }
+  #main-subheader {
+    opacity: 0;
+    transform: translateY(100px);
+    animation-fill-mode: both;
   }
 }
 
@@ -37,18 +61,26 @@
     list-style-type: none;
     max-height: 10em;
     max-width: 77.5rem;
+    @include media-breakpoint-only(xs) {
+      max-height: none;
+      -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
+      li {
+        padding-left: 3rem;
+      }
+    }
+    @include media-breakpoint-only(md) {
+      max-height: 20em;
+    }
     font-weight: 500;
     font-size: 1.6rem;
     padding: 0;
     margin-bottom: 3rem;
     li {
-      padding-left: 4.2rem;
       margin-bottom: 0.5rem;
       position: relative;
       @extend .d-flex;
       .list-number {
-        position: absolute;
-        left: 0;
         width: 4rem;
         text-align: left;
         padding-left: 0.7rem;
@@ -128,6 +160,9 @@
     width: 100%;
     max-width: 58rem;
     margin-bottom: -3.7rem;
+  }
+  &.already-shown .steps-how-wrapper {
+    @extend .animation-start;
   }
 }
 
@@ -227,5 +262,57 @@
   padding-bottom: 7.5rem;
   .title-type-red {
     margin-bottom: 3.8rem;
+  }
+  form.canSubmit {
+    .progress-circle-svg {
+      .progress-circle-bar {
+        stroke-dashoffset: 0 !important;
+      }
+    }
+  }
+  form.submitting {
+    pointer-events: none;
+    cursor: wait;
+    .progress-circle-svg {
+      .progress-circle-rail {
+        stroke: transparent;
+      }
+      .progress-circle-bar {
+        animation: svg-rotate 10s infinite both;
+      }
+    }
+  }
+}
+
+.ninth-section {
+  font-size: 1.6rem;
+  display: none;
+  .big {
+    font-size: 2.4rem;
+  }
+  svg g {
+    fill: transparent;
+    stroke: $red;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 900;
+    transition: stroke-dasharray 1s 2s, stroke-dashoffset 3s, fill .5s 3.5s ease-in-out;
+  }
+  &.already-shown {
+    svg g {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      fill: $red;
+
+    }
+  }
+}
+
+.check-on-scroll {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: 500ms 100ms ease-in-out;
+  &.already-shown {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
