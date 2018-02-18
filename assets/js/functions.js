@@ -1,6 +1,5 @@
 $( document ).ready(function() {
 
-
     var callbackForm = document.getElementById('form-callback');
 
     // Typewriter activate
@@ -59,25 +58,36 @@ $( document ).ready(function() {
         callbackForm.classList.add('submitting');
         buttonSubmitSpan.innerHTML = 'Отправляем...';
 
+        var onMessageSend = function() {
+            console.log('message send');
+            var eigth = document.getElementsByClassName('eighth-section').item(0);
+            var ninth = document.getElementsByClassName('ninth-section').item(0);
+            eigth.classList.add('fadeout-top');
+            ninth.getElementsByClassName('name-here').item(0).innerHTML = data.name;
+            eigth.addEventListener('animationend', function () {
+                eigth.style.display = 'none';
+                ninth.style.display = 'block';
+                setTimeout(function(){
+                    ninth.classList.add('already-shown');
+                },10);
+            });
+        };
+
 
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
-                console.log('message send');
-                var eigth = document.getElementsByClassName('eighth-section').item(0);
-                var ninth = document.getElementsByClassName('ninth-section').item(0);
-                eigth.classList.add('fadeout-top');
-                ninth.getElementsByClassName('name-here').item(0).innerHTML = data.name;
-                eigth.addEventListener('animationend', function () {
-                    eigth.style.display = 'none';
-                    ninth.style.display = 'block';
-                    setTimeout(function(){
-                        ninth.classList.add('already-shown');
-                    },10);
-                });
+                onMessageSend();
             }
         };
         xhttp.open("GET", src, true);
-        xhttp.send();
+
+        if (Globals.sendOnSubmit) {
+            xhttp.send();
+        } else {
+            setTimeout(onMessageSend, 3000);
+        }
+
     });
 
 });
+

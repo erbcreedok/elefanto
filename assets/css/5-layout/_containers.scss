@@ -27,7 +27,7 @@
 .rounded-box {
   @include prefix((box-shadow: 0 0 20px rgba(0,0,0,0.047)), webkit moz);
 }
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   body {
     padding-top: 6rem;
   }
@@ -35,7 +35,7 @@
     @include nav-top();
   }
 }
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   .main-container {
     padding: 1rem 1rem 0 1rem+28.1rem;
   }
@@ -48,6 +48,11 @@
       overflow-y: auto;
     }
   }
+  .rounded-box {
+    border-radius: 1rem;
+  }
+}
+@include media-breakpoint-up(md) {
   .section-padding {
     padding-top: 7.3rem;
     padding-bottom: 7.3rem;
@@ -55,9 +60,6 @@
   .section-padding-low {
     padding-top: 4rem;
     padding-bottom: 4rem;
-  }
-  .rounded-box {
-    border-radius: 1rem;
   }
 }
 @include media-breakpoint-up(xl) {

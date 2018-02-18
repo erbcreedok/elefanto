@@ -9602,7 +9602,7 @@ footer {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.047);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.047); }
 
-@media (max-width: 767.99px) {
+@media (max-width: 991.99px) {
   body {
     padding-top: 6rem; }
   .nav-wrapper {
@@ -9671,7 +9671,7 @@ footer {
     .nav-wrapper .nav-open-toggle {
       display: block; } }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .main-container {
     padding: 1rem 1rem 0 29.1rem; }
   .nav-wrapper {
@@ -9681,14 +9681,16 @@ footer {
     .nav-wrapper .nav {
       max-height: 99vh;
       overflow-y: auto; }
+  .rounded-box {
+    border-radius: 1rem; } }
+
+@media (min-width: 768px) {
   .section-padding {
     padding-top: 7.3rem;
     padding-bottom: 7.3rem; }
   .section-padding-low {
     padding-top: 4rem;
-    padding-bottom: 4rem; }
-  .rounded-box {
-    border-radius: 1rem; } }
+    padding-bottom: 4rem; } }
 
 @media (min-width: 1200px) {
   .main-container {
@@ -9766,9 +9768,6 @@ footer {
         flex-wrap: nowrap !important; }
         .second-section ol li {
           padding-left: 3rem; } }
-    @media (min-width: 768px) and (max-width: 991.99px) {
-      .second-section ol {
-        max-height: 20em; } }
     .second-section ol li {
       margin-bottom: 0.5rem;
       position: relative; }
@@ -10152,9 +10151,8 @@ footer {
 .form-body .form-submit-button {
   margin-top: 5rem !important; }
 
-@media (min-width: 992px) {
-  .form-body .form-result-wrapper {
-    margin-right: 7.7rem; } }
+.form-body .form-result-wrapper {
+  margin-right: 7.7rem; }
 
 .form-groups {
   position: relative; }

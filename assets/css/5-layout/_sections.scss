@@ -69,9 +69,6 @@
         padding-left: 3rem;
       }
     }
-    @include media-breakpoint-only(md) {
-      max-height: 20em;
-    }
     font-weight: 500;
     font-size: 1.6rem;
     padding: 0;

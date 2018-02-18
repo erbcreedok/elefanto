@@ -180,7 +180,8 @@ Utils.prototype = {
         message += arr.when     !=='' ? '\n    <i> Когда: </i> ' + arr.when : '';
         message += arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
         return encodeURIComponent(message);
-    }
+    },
+
 
 
 };

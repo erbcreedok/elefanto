@@ -228,10 +228,8 @@
     margin-top: 5rem!important;
   }
 
-  @include media-breakpoint-up(lg) {
-    .form-result-wrapper {
-      margin-right: 7.7rem;
-    }
+  .form-result-wrapper {
+    margin-right: 7.7rem;
   }
 }
 .form-groups {
