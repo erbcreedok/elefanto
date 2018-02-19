@@ -215,7 +215,7 @@
                   </ol>
                   <div class="d-sm-flex ">
                   <p class="gray-color text-center mb-5 mb-sm-0 text-sm-left">Если у вас есть такие сложности, <span class="medium darkblue-color">оставьте заявку на бесплатную консультацию</span> и получите четкую инструкцию по решению своих задач. Будем рады оказаться вам максимально полезными.</p>
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary d-block">
                       <span>Получить решение</span>
                   </button>
               </div>
@@ -224,8 +224,8 @@
           <section class="rounded-box section-padding third-section check-on-scroll">
               <div class="section-container">
                   <h3 class="title-type-red section-heading">Мы решаем эти сложности, используя следующие инструменты:</h3>
-                  <ul class="d-flex tabs-container">
-                      <li class="tab active">
+                  <ul class="d-none d-md-flex  tabs-container">
+                      <li class="tab active" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-1">
                           <div class="tab-icon">
                               <img src="assets/img/web-design.svg" alt="">
                           </div>
@@ -233,7 +233,7 @@
                               <span>Веб-разработка</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-2">
                           <div class="tab-icon">
                               <img src="assets/img/profile.svg" alt="">
                           </div>
@@ -241,7 +241,7 @@
                               <span>Индивидуальный дизайн</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-3">
                           <div class="tab-icon">
                               <img src="assets/img/teamwork.svg" alt="">
                           </div>
@@ -249,7 +249,7 @@
                               <span>Продвижение</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main"  data-tab-target="#tab-card-4">
                           <div class="tab-icon">
                               <img src="assets/img/search.svg" alt="">
                           </div>
@@ -259,21 +259,107 @@
                       </li>
                       <hr class="tab-underline"/>
                   </ul>
-                  <div class="d-flex justify-content-between tab-cards-container">
-                      <div class="tab-card">
-                          <ul>
-                              <li>Корпоративные сайты и Landing Page</li>
-                              <li>Интернет-магазины</li>
-                              <li>Мобильные приложения</li>
-                              <li>Внедрение корпоративных порталов</li>
-                              <li>Разработка Чат-ботов</li>
-                          </ul>
-                      </div>
-                      <div class="tab-image d-none d-sm-block d-md-none d-lg-block">
-                          <img src="assets/img/1.jpg" height="220px" alt="">
+                  <div class="tab-cards-wrapper">
+                      <div class="tab-cards-container" id="tab-cards-main">
+                          <div id="tab-card-1" class="tab-card active">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/web-design.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Веб-разработка</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/1.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-2" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/profile.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Индивидуальный дизайн</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/2.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-3" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/teamwork.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Продвижение</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/3.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-4" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/search.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Маркетинг и продажи</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/2.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                   </div>
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary d-block mx-auto mx-md-0">
                       <span>Получить консультацию</span>
                   </button>
               </div>
@@ -289,42 +375,50 @@
                       </p>
                   </div>
                   <div class="d-flex align-items-center">
-                      <div class="desktop-image d-lg-block d-none">
+                      <div class="desktop-image d-md-block d-none">
                           <img src="assets/img/workspace@2x.png" alt="">
                       </div>
                       <div class="d-flex flex-wrap steps-how-wrapper align-items-start start ml-0 ml-lg-5">
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
-                                  <p class="steps-how-num">01</p>
-                                  <div class="steps-how-circle-container">
-                                      <div class="steps-how-circle"></div>
+                                  <div>
+                                      <p class="steps-how-num">01</p>
+                                      <div class="steps-how-circle-container">
+                                          <div class="steps-how-circle"></div>
+                                      </div>
                                   </div>
                                   <p class="steps-how-title">Мы проводим аудит сайта, маркетинга и отдела продаж</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
+                                  <div>
                                   <p class="steps-how-num">02</p>
                                   <div class="steps-how-circle-container">
                                       <div class="steps-how-circle"></div>
+                                  </div>
                                   </div>
                                   <p class="steps-how-title">Подбираем нужные инструменты для решения вашей Боли</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
+                                  <div>
                                   <p class="steps-how-num">03</p>
                                   <div class="steps-how-circle-container">
                                       <div class="steps-how-circle"></div>
+                                  </div>
                                   </div>
                                   <p class="steps-how-title">Разрабатываем продуктивную стратегию для достижения нужного результата</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
-                                  <p class="steps-how-num">04</p>
-                                  <div class="steps-how-circle-container">
-                                      <div class="steps-how-circle"></div>
+                                  <div>
+                                      <p class="steps-how-num">04</p>
+                                      <div class="steps-how-circle-container">
+                                          <div class="steps-how-circle"></div>
+                                      </div>
                                   </div>
                                   <p class="steps-how-title">Ваш бизнес уверенно идет в гору</p>
                               </div>
@@ -347,8 +441,8 @@
           <section class="rounded-box section-padding fifth-section check-on-scroll">
               <div class="section-container">
 
-                  <div class="d-flex flex-wrap flex-lg-nowrap justify-content-between fifth-section-top align-items-end">
-                      <div class="px-0 d-flex align-items-center text-center text-lg-left align-items-lg-start flex-column col-12 col-lg-auto mb-md-5 mb-lg-0">
+                  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between fifth-section-top align-items-end">
+                      <div class="px-0 d-flex align-items-center text-center text-md-left align-items-md-start flex-column col-12 col-md-auto mb-md-5 mb-lg-0">
                           <h3>Гарантия результата</h3>
                           <p class="medium">
                               Вернем деньги, если наша работа будет неэффективна. Работаем на совесть и гарантируем результат
@@ -381,7 +475,7 @@
                           </div>
                       </div>
                   </div>
-                  <p style="margin-bottom: 1.7rem" class="text-center text-lg-left">
+                  <p style="margin-bottom: 1.7rem" class="text-center text-md-left">
                       <a href="#" class="red-color medium unstyled">Начать с нами проект    <span class="icomoon icon-arrow-right"></span></a>
                   </p>
               </div>
@@ -457,16 +551,16 @@
                   </div>
                   <div class="clients-logos">
                   <div class="d-flex justify-content-around align-items-center flex-wrap flex-md-nowrap">
-                      <img src="assets/img/logos/chevron.png" alt="CHEVRON">
-                      <img src="assets/img/logos/kazminerals.png" alt="Kaz Minerals">
-                      <img src="assets/img/logos/kazakhtelecom.png" alt="Қазақтелеком">
-                      <img src="assets/img/logos/halykbank.png" alt="Halyk Bank">
+                      <img src="assets/img/logos/chevron@2x.jpg" alt="CHEVRON">
+                      <img src="assets/img/logos/kazminerals@2x.jpg" alt="Kaz Minerals">
+                      <img src="assets/img/logos/kazakhtelecom@2x.jpg" alt="Қазақтелеком">
+                      <img src="assets/img/logos/halykbank@2x.jpg" alt="Halyk Bank">
                   </div>
                   <div class="d-flex justify-content-around align-items-center flex-wrap flex-md-nowrap">
-                      <img src="assets/img/logos/technodom.png" alt="Technodom">
-                      <img src="assets/img/logos/2gis.png" alt="2GIS">
-                      <img src="assets/img/logos/asu.png" style="height: 4rem" alt="Asu">
-                      <img src="assets/img/logos/sberbank.png" style="height: 2.75rem" alt="Сбербанк">
+                      <img src="assets/img/logos/technodom@2x.jpg" alt="Technodom">
+                      <img src="assets/img/logos/2gis@2x.jpg" alt="2GIS">
+                      <img src="assets/img/logos/asu@2x.jpg" style="height: 4rem" alt="Asu">
+                      <img src="assets/img/logos/sberbank@2x.jpg" style="height: 2.75rem" alt="Сбербанк">
                   </div>
               </div>
               </div>
@@ -479,141 +573,141 @@
                   <form id="form-callback" disabled="" class="form-wrapper">
                       <div class="form-body d-md-flex justify-content-between">
                           <div class="form-groups">
-                          <div data-form-group-page="first"  class="form-group-first  form-group-page form-group-now form-main-data">
-                              <p class="form-heading">
-                                  <span class="form-heading-title"># Выберите тип проекта</span>
-                              </p>
-                              <div class=" form-radio-images d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                  <input type="hidden" name="type" id="form-type" value="">
-                                  <div class="form-radio-image" data-form-target="form-group-second" data-form-value="Веб-разработка" data-form-progress="25">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-computer red-color"></span>
+                              <div data-form-group-page="first"  class="form-group-first  form-group-page form-group-now form-main-data">
+                                  <p class="form-heading">
+                                      <span class="form-heading-title"># Выберите тип проекта</span>
+                                  </p>
+                                  <div class=" form-radio-images d-flex flex-wrap">
+                                      <input type="hidden" name="type" id="form-type" value="">
+                                      <div class="form-radio-image" data-form-target="form-group-second" data-form-value="Веб-разработка" data-form-progress="25">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-computer red-color"></span>
+                                          </div>
+                                          <p>
+                                              Веб-разработка
+                                          </p>
                                       </div>
-                                      <p>
-                                          Веб-разработка
-                                      </p>
+                                      <div class="form-radio-image" data-form-target="form-group-second" data-form-value="Индивидуальный дизайн" data-form-progress="25">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-vector-pen red-color"></span>
+                                          </div>
+                                          <p>
+                                              Индивидуальный дизайн
+                                          </p>
+                                      </div>
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Другое" data-form-progress="50">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-lupe red-color"></span>
+                                          </div>
+                                          <p>
+                                              Мне нужно<br>что-то другое
+                                          </p>
+                                      </div>
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Продвижение" data-form-progress="50">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-globe red-color"></span>
+                                          </div>
+                                          <p>
+                                              Продвижение
+                                          </p>
+                                      </div>
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Маркетинг и продажи" data-form-progress="50">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-circles red-color"></span>
+                                          </div>
+                                          <p>
+                                              Маркетинг и продажи
+                                          </p>
+                                      </div>
                                   </div>
-                                  <div class="form-radio-image" data-form-target="form-group-second" data-form-value="Индивидуальный дизайн" data-form-progress="25">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-vector-pen red-color"></span>
+                              </div>
+                              <div data-form-group-page="second" class="form-group-second form-group-page form-main-data">
+                                  <p class="form-heading">
+                                      <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-first" data-form-progress="0"></span>
+                                      <span class="form-heading-title"># Выберите платформу для разработки</span>
+                                  </p>
+                                  <div class="form-radio-images d-flex flex-wrap">
+                                      <input type="hidden" name="platform" id="form-platform" value="">
+                                      <div class="form-radio-image" data-form-target="form-group-third" data-form-value="Адаптивный сайт" data-form-progress="50">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-monitor red-color"></span>
+                                          </div>
+                                          <p>
+                                              Адаптивный сайт
+                                          </p>
                                       </div>
-                                      <p>
-                                          Индивидуальный дизайн
-                                      </p>
+                                      <div class="form-radio-image" data-form-target="form-group-third" data-form-value="Мобильное приложение" data-form-progress="50">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-smartphone2 red-color"></span>
+                                          </div>
+                                          <p>
+                                              Мобильное приложение
+                                          </p>
+                                      </div>
                                   </div>
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Другое" data-form-progress="50">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-lupe red-color"></span>
+                              </div>
+                              <div data-form-group-page="third"  class="form-group-third  form-group-page form-main-data">
+                                  <p class="form-heading">
+                                      <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-second" data-form-progress="25"></span>
+                                      <span class="form-heading-title"># Когда вы хотите начать проект</span>
+                                  </p>
+                                  <div class="form-radio-images d-flex flex-wrap">
+                                      <input type="hidden" name="when" id="form-when" value="">
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Уже сейчас" data-form-progress="75">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-clock3 red-color"></span>
+                                          </div>
+                                          <p>
+                                              Уже сейчас
+                                          </p>
                                       </div>
-                                      <p>
-                                          Мне нужно<br>что-то другое
-                                      </p>
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="В течении недели" data-form-progress="75">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-calendar red-color"></span>
+                                          </div>
+                                          <p>
+                                              В течении недели
+                                          </p>
+                                      </div>
+                                      <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="В течении месяца" data-form-progress="75">
+                                          <div class="form-radio-image-icon">
+                                              <span class="icomoon icon-calendar-month red-color"></span>
+                                          </div>
+                                          <p>
+                                              В течении месяца
+                                          </p>
+                                      </div>
                                   </div>
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Продвижение" data-form-progress="50">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-globe red-color"></span>
+                              </div>
+                              <div data-form-group-page="fourth" class="form-group-fourth form-group-page form-main-data">
+                                  <p class="form-heading">
+                                      <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-third" data-form-progress="0"></span>
+                                      <span class="form-heading-title"># Введите контактную информацию</span>
+                                  </p>
+                                  <div class="form-group row">
+                                      <div class="input-group col-lg-6">
+                                          <label for="name">Имя</label>
+                                          <input type="text" autocomplete="given-name" required name="name" id="name" placeholder="Александра"/>
                                       </div>
-                                      <p>
-                                          Продвижение
-                                      </p>
-                                  </div>
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Маркетинг и продажи" data-form-progress="50">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-circles red-color"></span>
+                                      <div class="input-group col-lg-6">
+                                          <label for="surname">Фамилия</label>
+                                          <input type="text" autocomplete="family-name" required name="surname" id="surname" placeholder="Винокурова"/>
                                       </div>
-                                      <p>
-                                          Маркетинг и продажи
-                                      </p>
+                                      <div class="input-group col-lg-6">
+                                          <label for="email">Адрес почты</label>
+                                          <input type="email" autocomplete="email" name="email" required id="email" placeholder="пример@gmail.com"/>
+                                      </div>
+                                      <div class="input-group col-lg-6">
+                                          <label for="phone">Номер телефона</label>
+                                          <input type="tel" autocomplete="tel-national" required name="phone" id="phone" placeholder="+7 (702) 502 62 85"/>
+                                      </div>
+                                      <div class="input-group col-12">
+                                          <label for="message">Сообщение</label>
+                                          <input name="message" id="message" placeholder="Ваши пожелания, требования сроки и другое"/>
+                                      </div>
                                   </div>
                               </div>
                           </div>
-                          <div data-form-group-page="second" class="form-group-second form-group-page form-main-data">
-                              <p class="form-heading">
-                                  <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-first" data-form-progress="0"></span>
-                                  <span class="form-heading-title"># Выберите платформу для разработки</span>
-                              </p>
-                              <div class="form-radio-images d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                  <input type="hidden" name="platform" id="form-platform" value="">
-                                  <div class="form-radio-image" data-form-target="form-group-third" data-form-value="Адаптивный сайт" data-form-progress="50">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-monitor red-color"></span>
-                                      </div>
-                                      <p>
-                                          Адаптивный сайт
-                                      </p>
-                                  </div>
-                                  <div class="form-radio-image" data-form-target="form-group-third" data-form-value="Мобильное приложение" data-form-progress="50">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-smartphone2 red-color"></span>
-                                      </div>
-                                      <p>
-                                          Мобильное приложение
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                          <div data-form-group-page="third"  class="form-group-third  form-group-page form-main-data">
-                              <p class="form-heading">
-                                  <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-second" data-form-progress="25"></span>
-                                  <span class="form-heading-title"># Когда вы хотите начать проект</span>
-                              </p>
-                              <div class="form-radio-images d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                  <input type="hidden" name="when" id="form-when" value="">
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="Уже сейчас" data-form-progress="75">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-clock3 red-color"></span>
-                                      </div>
-                                      <p>
-                                          Уже сейчас
-                                      </p>
-                                  </div>
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="В течении недели" data-form-progress="75">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-calendar red-color"></span>
-                                      </div>
-                                      <p>
-                                          В течении недели
-                                      </p>
-                                  </div>
-                                  <div class="form-radio-image" data-form-target="form-group-fourth" data-form-value="В течении месяца" data-form-progress="75">
-                                      <div class="form-radio-image-icon">
-                                          <span class="icomoon icon-calendar-month red-color"></span>
-                                      </div>
-                                      <p>
-                                          В течении месяца
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                          <div data-form-group-page="fourth" class="form-group-fourth form-group-page form-main-data">
-                              <p class="form-heading">
-                                  <span class="red-color icomoon icon-triangle-left form-return-back-button" data-form-target="form-group-third" data-form-progress="0"></span>
-                                  <span class="form-heading-title"># Введите контактную информацию</span>
-                              </p>
-                              <div class="form-group row">
-                                  <div class="input-group col-lg-6">
-                                      <label for="name">Имя</label>
-                                      <input type="text" autocomplete="given-name" required name="name" id="name" placeholder="Александра"/>
-                                  </div>
-                                  <div class="input-group col-lg-6">
-                                      <label for="surname">Фамилия</label>
-                                      <input type="text" autocomplete="family-name" required name="surname" id="surname" placeholder="Винокурова"/>
-                                  </div>
-                                  <div class="input-group col-lg-6">
-                                      <label for="email">Адрес почты</label>
-                                      <input type="email" autocomplete="email" name="email" required id="email" placeholder="пример@gmail.com"/>
-                                  </div>
-                                  <div class="input-group col-lg-6">
-                                      <label for="phone">Номер телефона</label>
-                                      <input type="tel" autocomplete="tel-national" required name="phone" id="phone" placeholder="+7 (702) 502 62 85"/>
-                                  </div>
-                                  <div class="input-group col-12">
-                                      <label for="message">Сообщение</label>
-                                      <input name="message" id="message" placeholder="Ваши пожелания, требования сроки и другое"/>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
                           <div class="form-result-wrapper d-flex align-items-center flex-column">
                               <div class="progress-circle-svg d-none d-md-flex align-items-center justify-content-center mb-auto progress-circle-0">
                                   <svg viewBox="0 0 120 128">

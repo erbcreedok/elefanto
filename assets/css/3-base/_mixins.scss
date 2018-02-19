@@ -7,6 +7,33 @@
     #{$property}: $value;
   }
 }
+@mixin d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+@mixin align-items($position) {
+  -webkit-box-align: $position !important;
+  -ms-flex-align: $position !important;
+  align-items: $position !important;
+}
+@mixin justify-content($position) {
+  -webkit-box-pack: $position !important;
+  -ms-flex-pack: $position !important;
+  justify-content: $position !important;
+}
+@mixin justify-content-between() {
+  -webkit-box-pack: justify !important;
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important;
+}
+
+@mixin default-box-shadow() {
+  @include prefix((box-shadow: 0 0 20px rgba(0,0,0,0.047)), webkit moz);
+}
+@mixin default-border-radius() {
+  @include prefix((border-radius: 1rem), webkit moz);
+}
 
 @mixin nav-top() {
   $time: .3s;
@@ -96,4 +123,146 @@
   animation:
           typing $typing-duration,
           blink-caret $blink-caret-duration;
+}
+
+@mixin steps-how-mobile() {
+  display: block!important;
+  .steps-how {
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 10rem;
+    position: relative;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 3px;
+      height: 0;
+      top: 100%;
+      margin-top: -1rem;
+      left: 2.4rem;
+      background-image: linear-gradient($red 80%, rgba(255,255,255,0) 0%);
+      background-position: top right;
+      background-size: 3px 20px;
+      background-repeat: repeat-y;
+    }
+    &:nth-child(4) {
+      margin-bottom: 0;
+      &:after {content: none}
+    }
+    .steps-how-container {
+      width: auto;
+      @include d-flex();
+      @include align-items(center);
+    }
+    .steps-how-num {
+      font-size: 3.6rem;
+      width: 5rem;
+    }
+    .steps-how-circle {
+      height: 16px;
+      width: 16px;
+      border-width: 2px;
+    }
+    .steps-how-title {
+      margin-right: 2rem;
+      margin-left: 2rem;
+    }
+  }
+  .steps-how-path {
+    display: none!important;
+  }
+  &.animation-start {
+    $path-duration: .5s;
+    $station-duration: .2s;
+    .steps-how:nth-child(1) {
+      animation: fadein $station-duration ease-in both;
+      &:after {
+        height: 11rem;
+        transition: $path-duration $station-duration ease-in;
+      }
+    }
+    .steps-how:nth-child(2) {
+      animation: fadein $station-duration ($path-duration+$station-duration) ease-in both;
+      &:after {
+        height: 11rem;
+        transition: $path-duration ($path-duration + $station-duration*2) ease-in;
+      }
+    }
+    .steps-how:nth-child(3) {
+      animation: fadein $station-duration (($path-duration + $station-duration)*2) ease-in both;
+      &:after {
+        height: 11rem;
+        transition: $path-duration ($path-duration*2 + $station-duration*3) ease-in;
+      }
+    }
+    .steps-how:nth-child(4) {
+      animation: fadein $station-duration (($path-duration + $station-duration)*3) linear both;
+    }
+  }
+}
+
+@mixin tab-heading {
+  @include d-flex();
+  @include align-items(center);
+  @include justify-content(center);
+  font-weight: 500;
+  .tab-icon {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    img {
+      margin-top: -5px;
+    }
+  }
+}
+
+@mixin tab-card-mobile() {
+  @include default-box-shadow();
+  @include default-border-radius();
+  padding: 1rem 1rem 2rem 0;
+  @include prefix((box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.047)), webkit moz);
+  .tab-heading {
+    margin: 2rem auto;
+  }
+  .tab-card-body {
+    font-size: 1.2rem;
+    @include d-flex();
+    @include justify-content(center);
+  }
+}
+@mixin tab-cards-wrapper-mobile() {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  .tab-cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    padding-left: 8.5vw;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: mandatory;
+    /* older spec implementation */
+    //scroll-snap-destination: 0% 100%;
+    scroll-snap-points-x: repeat(75vw);
+    scroll-behaviour: smooth;
+    &:after {
+      content: '';
+      display: block;
+      min-width: 9.5vw;
+      min-height: 1px;
+    }
+    .tab-card {
+      scroll-snap-align: center;
+      display: block;
+      max-width: 71vw;
+      flex: 0 0 71rem;
+      margin: 1rem 3vw;
+      position: relative;
+    }
+  }
 }

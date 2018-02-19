@@ -17,6 +17,7 @@ gulp.task("concatScripts", function() {
         'assets/js/vendor/jquery-3.2.1.slim.min.js',
         'assets/js/vendor/popper.min.js',
         'assets/js/vendor/bootstrap.min.js',
+        'assets/js/vendor/scrollSnapPointsPolyfill.js',
         'assets/js/modules/globals.js',
         'assets/js/modules/utils.js',
         'assets/js/modules/passives.js',

@@ -13,6 +13,7 @@ Passives.prototype = {
         this.formRadioOnClick();
         this.formBackButtonOnClick();
         this.phoneInputCheck();
+        this.tabChange();
     },
 
     // Toggle class on click
@@ -30,15 +31,24 @@ Passives.prototype = {
 
     // Adds 'already-shown' class by default
     addClassOnScroll: function() {
-        [].slice.call(document.getElementsByClassName('check-on-scroll')).map(function(element) {
+        var lastScrollTop = 0;
+
+        var addClassToAppeared = function(element) {
             if (Utils.isElementInView(element, false, 10)) {
                 element.classList.add('already-shown');
-            }
-            window.addEventListener('scroll', function() {
-                if (Utils.isElementInView(element, false, 10)) {
-                    element.classList.add('already-shown');
+                var st = window.pageYOffset || document.documentElement.scrollTop;
+                if (st < lastScrollTop){
+                    element.classList.add('appeared-from-top');
                 }
-            });
+                lastScrollTop = st;
+            }
+        };
+
+        [].slice.call(document.getElementsByClassName('check-on-scroll')).map(function(element) {
+            if (Utils.isElementInView(element, false, 10)) {
+                addClassToAppeared(element);
+            }
+            window.addEventListener('scroll', addClassToAppeared.bind(this, element));
         });
     },
 
@@ -89,6 +99,14 @@ Passives.prototype = {
                 {
                     event.preventDefault();
                 }
+            });
+        });
+    },
+
+    tabChange: function () {
+        [].slice.call(document.querySelectorAll('.tabs-container .tab')).map(function(element){
+            element.addEventListener('click', function() {
+                Utils.onChangeTab(element);
             });
         });
     }

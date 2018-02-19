@@ -106,7 +106,7 @@
   .section-heading {
     margin-bottom: 2.8rem;
   }
-  .tabs-container {
+  .tabs-wrapper {
     max-width: 835px;
     margin-bottom: 3rem;
   }
@@ -145,6 +145,12 @@
   background: #FFFFFF url($path-image + '/pattern2.png');
   .title-type-red {
     margin-bottom: 4rem;
+    @include media-breakpoint-down(sm) {
+      p {
+        margin-left: -4rem;
+        margin-right: -2rem;
+      }
+    }
   }
   .desktop-image {
     padding: 0 1px;
@@ -279,6 +285,9 @@
       }
     }
   }
+  &.fadeout-top {
+    animation: fadeout-top 300ms ease-in-out both !important;
+  }
 }
 
 .ninth-section {
@@ -291,15 +300,14 @@
     fill: transparent;
     stroke: $red;
     stroke-dasharray: 100;
-    stroke-dashoffset: 900;
-    transition: stroke-dasharray 1s 2s, stroke-dashoffset 3s, fill .5s 3.5s ease-in-out;
+    stroke-dashoffset: 300;
+    transition: stroke-dasharray .5s 1s, stroke-dashoffset 1.5s, fill .2s 1.3s ease-in-out;
   }
   &.already-shown {
     svg g {
       stroke-dasharray: 0;
       stroke-dashoffset: 0;
       fill: $red;
-
     }
   }
 }
@@ -307,9 +315,11 @@
 .check-on-scroll {
   opacity: 0;
   transform: translateY(100px);
-  transition: 500ms 100ms ease-in-out;
   &.already-shown {
-    opacity: 1;
-    transform: translateY(0px);
+    animation: fadein-bottom 500ms 100ms ease-in-out both;
+    &.appeared-from-top {
+      animation: fadein-top 500ms 100ms ease-in-out both;
+    }
   }
+
 }

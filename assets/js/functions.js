@@ -59,18 +59,19 @@ $( document ).ready(function() {
         buttonSubmitSpan.innerHTML = 'Отправляем...';
 
         var onMessageSend = function() {
-            console.log('message send');
             var eigth = document.getElementsByClassName('eighth-section').item(0);
             var ninth = document.getElementsByClassName('ninth-section').item(0);
             eigth.classList.add('fadeout-top');
             ninth.getElementsByClassName('name-here').item(0).innerHTML = data.name;
-            eigth.addEventListener('animationend', function () {
+            var animationEnd = function() {
                 eigth.style.display = 'none';
                 ninth.style.display = 'block';
                 setTimeout(function(){
                     ninth.classList.add('already-shown');
                 },10);
-            });
+                eigth.removeEventListener('animationend', animationEnd);
+            };
+            eigth.addEventListener('animationend', animationEnd);
         };
 
 
@@ -87,6 +88,7 @@ $( document ).ready(function() {
             setTimeout(onMessageSend, 3000);
         }
 
+        return false;
     });
 
 });

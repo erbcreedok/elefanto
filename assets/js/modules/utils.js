@@ -23,7 +23,7 @@ Utils.prototype = {
             element.classList.remove('typewriter-cursor-blink');
             element.innerHTML += txt.charAt(i);
             i++;
-            var deltaSpeed = (Math.random() * 10 + 1 ) * speed;
+            var deltaSpeed = (Math.random() * 10 + 0.2 ) * speed;
             setTimeout(this.typeWriter.bind(this, element, i, txt, speed), deltaSpeed );
         }
         else {
@@ -181,7 +181,72 @@ Utils.prototype = {
         message += arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
         return encodeURIComponent(message);
     },
+    onChangeTab: function(element) {
+        this.showTabTarget(element);
+        this.markActiveTab(element);
+    },
+    showTabTarget: function(element) {
+        if (!element.dataset.tabTarget || !element.dataset.tabCardContainer ) return;
 
+        var tabCardContainer = document.querySelector(element.dataset.tabCardContainer);
+        if (!tabCardContainer) return;
+
+        var tabCardTarget = tabCardContainer.querySelector(element.dataset.tabTarget);
+        if (!tabCardTarget) return;
+
+        var activeTabCard = tabCardContainer.getElementsByClassName('active').item(0);
+        if (!activeTabCard) return;
+
+        if (activeTabCard === tabCardTarget) return;
+
+        activeTabCard.classList.add('prev');
+        tabCardTarget.classList.add('next');
+
+        if(!Utils.isPreviousSibling(tabCardTarget, activeTabCard)) {
+            activeTabCard.classList.add('reverse');
+            tabCardTarget.classList.add('reverse');
+        }
+
+        var setThisActive = function() {
+            [].slice.call(tabCardContainer.getElementsByClassName('tab-card')).forEach(function(el) {el.classList.remove('active')});
+            activeTabCard.classList.remove('prev', 'reverse');
+            tabCardTarget.classList.remove('next', 'reverse');
+            tabCardTarget.classList.add('active');
+            tabCardTarget.removeEventListener('animationend', setThisActive);
+        };
+
+        tabCardTarget.addEventListener('animationend', setThisActive);
+
+    },
+    markActiveTab: function(element) {
+        var tabContainer = Utils.findParent(element, 'tabs-container');
+        if (!tabContainer) return;
+        [].slice.call(tabContainer.getElementsByClassName('tab')).forEach(function (el) { el.classList.remove('active');});
+        var tabUnderline = tabContainer.getElementsByClassName('tab-underline').item(0);
+        tabUnderline.style.width = element.getBoundingClientRect().width + 'px';
+        tabUnderline.style.left = element.getBoundingClientRect().left - tabContainer.getBoundingClientRect().left + 'px';
+        var setThisActive = function() {
+            [].slice.call(tabContainer.getElementsByClassName('tab')).forEach(function (el) { el.classList.remove('active');});
+            element.classList.add('active');
+            tabUnderline.removeEventListener('transitionend', setThisActive);
+        };
+        tabUnderline.addEventListener('transitionend', setThisActive);
+    },
+    findParent: function(element, className) {
+        var parent = element.parentNode;
+        if (!parent.classList) return undefined;
+        if (parent.classList.contains(className)) {
+            return parent;
+        } else if (parent.tagName === 'body') {
+            return undefined;
+        }
+        return this.findParent(parent, className);
+    },
+    isPreviousSibling: function(element, target) {
+        if (!element.previousElementSibling) return false;
+        if (element.previousElementSibling === target) return true;
+        return this.isPreviousSibling(element.previousElementSibling, target);
+    }
 
 
 };

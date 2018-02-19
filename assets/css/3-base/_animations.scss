@@ -6,6 +6,14 @@
     stroke-dashoffset: -1100;
   }
 }
+@keyframes shorten-path-straight {
+  from {
+    height: 0;
+  }
+  to {
+    height: 11rem;
+  }
+}
 
 @keyframes fadein {
   from {
@@ -70,6 +78,16 @@
 @keyframes fadein-bottom {
   0% {
     transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes fadein-top {
+  0% {
+    transform: translateY(-100px);
     opacity: 0;
   }
   100% {

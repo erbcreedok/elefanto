@@ -224,8 +224,8 @@
           <section class="rounded-box section-padding third-section check-on-scroll">
               <div class="section-container">
                   <h3 class="title-type-red section-heading">Мы решаем эти сложности, используя следующие инструменты:</h3>
-                  <ul class="d-flex tabs-container">
-                      <li class="tab active">
+                  <ul class="d-none d-md-flex  tabs-container">
+                      <li class="tab active" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-1">
                           <div class="tab-icon">
                               <img src="assets/img/web-design.svg" alt="">
                           </div>
@@ -233,7 +233,7 @@
                               <span>Веб-разработка</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-2">
                           <div class="tab-icon">
                               <img src="assets/img/profile.svg" alt="">
                           </div>
@@ -241,7 +241,7 @@
                               <span>Индивидуальный дизайн</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main" data-tab-target="#tab-card-3">
                           <div class="tab-icon">
                               <img src="assets/img/teamwork.svg" alt="">
                           </div>
@@ -249,7 +249,7 @@
                               <span>Продвижение</span>
                           </div>
                       </li>
-                      <li class="tab">
+                      <li class="tab" data-tab-card-container="#tab-cards-main"  data-tab-target="#tab-card-4">
                           <div class="tab-icon">
                               <img src="assets/img/search.svg" alt="">
                           </div>
@@ -259,21 +259,107 @@
                       </li>
                       <hr class="tab-underline"/>
                   </ul>
-                  <div class="d-flex justify-content-between tab-cards-container">
-                      <div class="tab-card">
-                          <ul>
-                              <li>Корпоративные сайты и Landing Page</li>
-                              <li>Интернет-магазины</li>
-                              <li>Мобильные приложения</li>
-                              <li>Внедрение корпоративных порталов</li>
-                              <li>Разработка Чат-ботов</li>
-                          </ul>
-                      </div>
-                      <div class="tab-image d-none d-sm-block">
-                          <img src="assets/img/1.jpg" height="220px" alt="">
+                  <div class="tab-cards-wrapper">
+                      <div class="tab-cards-container" id="tab-cards-main">
+                          <div id="tab-card-1" class="tab-card active">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/web-design.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Веб-разработка</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/1.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-2" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/profile.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Индивидуальный дизайн</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/2.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-3" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/teamwork.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Продвижение</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/3.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="tab-card-4" class="tab-card">
+                              <div class="d-md-none">
+                                  <div class="tab-heading">
+                                      <div class="tab-icon">
+                                          <img src="assets/img/search.svg" alt="">
+                                      </div>
+                                      <div class="tab-title">
+                                          <span>Маркетинг и продажи</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="tab-card-body">
+                                  <ul>
+                                      <li>Корпоративные сайты и Landing Page</li>
+                                      <li>Интернет-магазины</li>
+                                      <li>Мобильные приложения</li>
+                                      <li>Внедрение корпоративных порталов</li>
+                                      <li>Разработка Чат-ботов</li>
+                                  </ul>
+                                  <div class="tab-image d-none d-md-block">
+                                      <img src="assets/img/2.jpg" alt="">
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                   </div>
-                  <button class="btn btn-primary d-block">
+                  <button class="btn btn-primary d-block mx-auto mx-md-0">
                       <span>Получить консультацию</span>
                   </button>
               </div>
@@ -295,36 +381,44 @@
                       <div class="d-flex flex-wrap steps-how-wrapper align-items-start start ml-0 ml-lg-5">
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
-                                  <p class="steps-how-num">01</p>
-                                  <div class="steps-how-circle-container">
-                                      <div class="steps-how-circle"></div>
+                                  <div>
+                                      <p class="steps-how-num">01</p>
+                                      <div class="steps-how-circle-container">
+                                          <div class="steps-how-circle"></div>
+                                      </div>
                                   </div>
                                   <p class="steps-how-title">Мы проводим аудит сайта, маркетинга и отдела продаж</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
+                                  <div>
                                   <p class="steps-how-num">02</p>
                                   <div class="steps-how-circle-container">
                                       <div class="steps-how-circle"></div>
+                                  </div>
                                   </div>
                                   <p class="steps-how-title">Подбираем нужные инструменты для решения вашей Боли</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
+                                  <div>
                                   <p class="steps-how-num">03</p>
                                   <div class="steps-how-circle-container">
                                       <div class="steps-how-circle"></div>
+                                  </div>
                                   </div>
                                   <p class="steps-how-title">Разрабатываем продуктивную стратегию для достижения нужного результата</p>
                               </div>
                           </div>
                           <div class="d-flex flex-wrap steps-how">
                               <div class="steps-how-container">
-                                  <p class="steps-how-num">04</p>
-                                  <div class="steps-how-circle-container">
-                                      <div class="steps-how-circle"></div>
+                                  <div>
+                                      <p class="steps-how-num">04</p>
+                                      <div class="steps-how-circle-container">
+                                          <div class="steps-how-circle"></div>
+                                      </div>
                                   </div>
                                   <p class="steps-how-title">Ваш бизнес уверенно идет в гору</p>
                               </div>
@@ -457,16 +551,16 @@
                   </div>
                   <div class="clients-logos">
                   <div class="d-flex justify-content-around align-items-center flex-wrap flex-md-nowrap">
-                      <img src="assets/img/logos/chevron.png" alt="CHEVRON">
-                      <img src="assets/img/logos/kazminerals.png" alt="Kaz Minerals">
-                      <img src="assets/img/logos/kazakhtelecom.png" alt="Қазақтелеком">
-                      <img src="assets/img/logos/halykbank.png" alt="Halyk Bank">
+                      <img src="assets/img/logos/chevron@2x.jpg" alt="CHEVRON">
+                      <img src="assets/img/logos/kazminerals@2x.jpg" alt="Kaz Minerals">
+                      <img src="assets/img/logos/kazakhtelecom@2x.jpg" alt="Қазақтелеком">
+                      <img src="assets/img/logos/halykbank@2x.jpg" alt="Halyk Bank">
                   </div>
                   <div class="d-flex justify-content-around align-items-center flex-wrap flex-md-nowrap">
-                      <img src="assets/img/logos/technodom.png" alt="Technodom">
-                      <img src="assets/img/logos/2gis.png" alt="2GIS">
-                      <img src="assets/img/logos/asu.png" style="height: 4rem" alt="Asu">
-                      <img src="assets/img/logos/sberbank.png" style="height: 2.75rem" alt="Сбербанк">
+                      <img src="assets/img/logos/technodom@2x.jpg" alt="Technodom">
+                      <img src="assets/img/logos/2gis@2x.jpg" alt="2GIS">
+                      <img src="assets/img/logos/asu@2x.jpg" style="height: 4rem" alt="Asu">
+                      <img src="assets/img/logos/sberbank@2x.jpg" style="height: 2.75rem" alt="Сбербанк">
                   </div>
               </div>
               </div>
