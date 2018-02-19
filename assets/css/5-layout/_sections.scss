@@ -313,8 +313,10 @@
 }
 
 .check-on-scroll {
-  opacity: 0;
-  transform: translateY(100px);
+  &.waiting-style {
+    opacity: 0;
+    transform: translateY(100px);
+  }
   &.already-shown {
     animation: fadein-bottom 500ms 100ms ease-in-out both;
     &.appeared-from-top {

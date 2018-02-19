@@ -45,6 +45,7 @@ Passives.prototype = {
         };
 
         [].slice.call(document.getElementsByClassName('check-on-scroll')).map(function(element) {
+            element.classList.add('waiting-style');
             if (Utils.isElementInView(element, false, 10)) {
                 addClassToAppeared(element);
             }

@@ -239,9 +239,11 @@
 @mixin tab-cards-wrapper-mobile() {
   margin-left: -2rem;
   margin-right: -2rem;
+  position: relative;
   .tab-cards-container {
     display: flex;
     flex-wrap: nowrap;
+    position: relative;
     overflow: auto;
     padding-left: 8.5vw;
     -webkit-overflow-scrolling: touch;

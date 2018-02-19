@@ -9981,16 +9981,17 @@ footer {
     stroke-dashoffset: 0;
     fill: #F03354; }
 
-.check-on-scroll {
+.check-on-scroll.waiting-style {
   opacity: 0;
   -webkit-transform: translateY(100px);
           transform: translateY(100px); }
-  .check-on-scroll.already-shown {
-    -webkit-animation: fadein-bottom 500ms 100ms ease-in-out both;
-            animation: fadein-bottom 500ms 100ms ease-in-out both; }
-    .check-on-scroll.already-shown.appeared-from-top {
-      -webkit-animation: fadein-top 500ms 100ms ease-in-out both;
-              animation: fadein-top 500ms 100ms ease-in-out both; }
+
+.check-on-scroll.already-shown {
+  -webkit-animation: fadein-bottom 500ms 100ms ease-in-out both;
+          animation: fadein-bottom 500ms 100ms ease-in-out both; }
+  .check-on-scroll.already-shown.appeared-from-top {
+    -webkit-animation: fadein-top 500ms 100ms ease-in-out both;
+            animation: fadein-top 500ms 100ms ease-in-out both; }
 
 .steps-how-wrapper {
   -webkit-box-align: start;
@@ -10226,13 +10227,15 @@ footer {
 @media (max-width: 767.99px) {
   .tab-cards-wrapper {
     margin-left: -2rem;
-    margin-right: -2rem; }
+    margin-right: -2rem;
+    position: relative; }
     .tab-cards-wrapper .tab-cards-container {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
+      position: relative;
       overflow: auto;
       padding-left: 8.5vw;
       -webkit-overflow-scrolling: touch;
