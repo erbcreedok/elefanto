@@ -14,10 +14,10 @@ var gulp = require('gulp'),
 
 gulp.task("concatScripts", function() {
     return gulp.src([
-        'assets/js/vendor/jquery-3.2.1.slim.min.js',
+        'assets/js/vendor/jquery-3.2.1.min.js',
         'assets/js/vendor/popper.min.js',
         'assets/js/vendor/bootstrap.min.js',
-        'assets/js/vendor/scrollSnapPointsPolyfill.js',
+        'assets/js/vendor/**/*.js',
         'assets/js/modules/globals.js',
         'assets/js/modules/utils.js',
         'assets/js/modules/passives.js',

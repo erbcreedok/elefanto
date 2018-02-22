@@ -9963,6 +9963,10 @@ footer {
   .eighth-section.fadeout-top {
     -webkit-animation: fadeout-top 300ms ease-in-out both !important;
             animation: fadeout-top 300ms ease-in-out both !important; }
+  @media (max-width: 360px) {
+    .eighth-section .form-radio-images {
+      margin-left: -2rem;
+      margin-right: -4rem; } }
 
 .ninth-section {
   font-size: 1.6rem;
@@ -10236,31 +10240,28 @@ footer {
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
       position: relative;
-      overflow: auto;
-      padding-left: 8.5vw;
-      -webkit-overflow-scrolling: touch;
-      -webkit-scroll-snap-type: mandatory;
-          -ms-scroll-snap-type: mandatory;
-              scroll-snap-type: mandatory;
-      /* older spec implementation */
-      -webkit-scroll-snap-points-x: repeat(75vw);
-          -ms-scroll-snap-points-x: repeat(75vw);
-              scroll-snap-points-x: repeat(75vw);
-      scroll-behaviour: smooth; }
+      overflow-x: auto;
+      padding-left: 12.5vw;
+      -webkit-perspective: 900px;
+              perspective: 900px; }
       .tab-cards-wrapper .tab-cards-container:after {
         content: '';
         display: block;
         min-width: 9.5vw;
         min-height: 1px; }
       .tab-cards-wrapper .tab-cards-container .tab-card {
-        scroll-snap-align: center;
         display: block;
         max-width: 71vw;
         -webkit-box-flex: 0;
-            -ms-flex: 0 0 71rem;
-                flex: 0 0 71rem;
-        margin: 1rem 3vw;
-        position: relative; } }
+            -ms-flex: 0 0 71vw;
+                flex: 0 0 71vw;
+        margin: 1rem 2vw;
+        position: relative;
+        -webkit-transform-origin: center;
+                transform-origin: center; }
+        .tab-cards-wrapper .tab-cards-container .tab-card.active {
+          -webkit-transform: scale(1);
+                  transform: scale(1); } }
 
 .tab-cards-container {
   position: relative; }

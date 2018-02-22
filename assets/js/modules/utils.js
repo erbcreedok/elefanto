@@ -17,6 +17,15 @@ Utils.prototype = {
             return elemTop < window.innerHeight - offsetBottom && elemBottom >= offsetTop;
         }
     },
+    elementHorizontalOffset: function (element, percentage) {
+        var rect = element.getBoundingClientRect();
+        var elemMiddle = rect.left + rect.width/2;
+        if (!percentage) {
+            return window.innerWidth/2 - elemMiddle;
+        } else {
+            return 1 - elemMiddle/(window.innerWidth/2);
+        }
+    },
     typeWriter: function(element, i, txt, speed) {
         if (i < txt.length) {
             element.classList.add('typewriter-typing');
@@ -246,7 +255,19 @@ Utils.prototype = {
         if (!element.previousElementSibling) return false;
         if (element.previousElementSibling === target) return true;
         return this.isPreviousSibling(element.previousElementSibling, target);
-    }
+    },
+    listenEvents: function(element, events, action) {
+        var eventsArray = events.split(' ');
+        eventsArray.forEach(function(event){
+            element.addEventListener(event, action);
+        });
+    },
+    removeEvents: function(element, events, action) {
+        var eventsArray = events.split(' ');
+        eventsArray.forEach(function(event){
+            element.removeEventListener(event, action);
+        });
+    },
 
 
 };

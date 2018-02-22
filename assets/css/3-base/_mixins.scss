@@ -244,14 +244,9 @@
     display: flex;
     flex-wrap: nowrap;
     position: relative;
-    overflow: auto;
-    padding-left: 8.5vw;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: mandatory;
-    /* older spec implementation */
-    //scroll-snap-destination: 0% 100%;
-    scroll-snap-points-x: repeat(75vw);
-    scroll-behaviour: smooth;
+    overflow-x: auto;
+    padding-left: 12.5vw;
+    perspective: 900px;
     &:after {
       content: '';
       display: block;
@@ -259,12 +254,15 @@
       min-height: 1px;
     }
     .tab-card {
-      scroll-snap-align: center;
       display: block;
       max-width: 71vw;
-      flex: 0 0 71rem;
-      margin: 1rem 3vw;
+      flex: 0 0 71vw;
+      margin: 1rem 2vw;
       position: relative;
+      transform-origin: center;
+      &.active {
+        transform: scale(1);
+      }
     }
   }
 }

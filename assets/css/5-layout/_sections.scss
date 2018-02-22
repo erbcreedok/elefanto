@@ -288,6 +288,12 @@
   &.fadeout-top {
     animation: fadeout-top 300ms ease-in-out both !important;
   }
+  @media  (max-width: 360px) {
+    .form-radio-images {
+      margin-left: -2rem;
+      margin-right: -4rem;
+    }
+  }
 }
 
 .ninth-section {
