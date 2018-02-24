@@ -34,6 +34,7 @@ Passives.prototype = {
         var lastScrollTop = 0;
 
         var addClassToAppeared = function(element) {
+            if (element.classList.contains('already-shown')) return;
             if (Utils.isElementInView(element, false, 10)) {
                 element.classList.add('already-shown');
                 var st = window.pageYOffset || document.documentElement.scrollTop;

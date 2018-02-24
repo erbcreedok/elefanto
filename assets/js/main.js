@@ -19,7 +19,10 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 var Globals = {
     botApi: '532328576:AAHwXhShNWR-MNw-TDBuJe1TNnfvWj-Yd48',
     chatId: '-306772855',
-    sendOnSubmit: true
+    sendOnSubmit: true,
+    servicesSection: {
+        isSnapOnScroll: true
+    }
 };
 // #UtilsJS begin
 
@@ -38,6 +41,16 @@ Utils.prototype = {
             return (elemTop >= offsetTop) && (elemBottom <= window.innerHeight + offsetBottom);
         } else {
             return elemTop < window.innerHeight - offsetBottom && elemBottom >= offsetTop;
+        }
+    },
+    isElementInHorizontalView: function(element, container, fullyInView) {
+        var rect = element.getBoundingClientRect();
+        var elemLeft = rect.left;
+        var elemRight = rect.right;
+        if (fullyInView === true) {
+            return (elemLeft >= 0) && (elemRight <= container.offsetWidth);
+        } else {
+            return elemLeft < container.offsetWidth && elemRight >= 0;
         }
     },
     elementHorizontalOffset: function (element, percentage) {
@@ -334,6 +347,7 @@ Passives.prototype = {
         var lastScrollTop = 0;
 
         var addClassToAppeared = function(element) {
+            if (element.classList.contains('already-shown')) return;
             if (Utils.isElementInView(element, false, 10)) {
                 element.classList.add('already-shown');
                 var st = window.pageYOffset || document.documentElement.scrollTop;
@@ -428,54 +442,94 @@ $(document).ready(function() {
     var container = document.getElementsByClassName('tab-cards-container').item(0);
     var cards = [].slice.call(container.children);
     if (!container) return;
-    var snapPoints = [];
     var timer = null;
+    var snapPoints = [];
+    var activeIndex = 0;
+    var lastContainerLeft = 0;
+    var isAnimating = false;
+    var scrollEndDelay = 66;
+    var isMobileView = false;
 
-    cards.forEach(function(card) {
-       var point = Utils.elementHorizontalOffset(card);
-       snapPoints.push(point);
-       console.log(point);
-    });
-
-    var snapToCenter = function() {
-        var scrollPoint = container.scrollLeft;
-        var point = -snapPoints[0];
-        var pointDelta = scrollPoint - point;
-        snapPoints.forEach(function (snapPoint) {
-            if (Math.abs(scrollPoint + snapPoint) < Math.abs(pointDelta)) {
-                point = -snapPoint;
-                pointDelta = scrollPoint - point;
-            }
+    var getSnapPoints = function () {
+        if (!isMobileView) return;
+        var p = [];
+        cards.forEach(function(card) {
+            var point = Utils.elementHorizontalOffset(card);
+            p.push(point);
         });
+        snapPoints = p;
+    };
+    var snapToCenter = function(direction) {
+        if (!isMobileView) return;
+        activeIndex += direction==='left' ? -1 : direction==='right' ? 1 : 0;
+        if (activeIndex < 0) activeIndex = 0;
+        if (activeIndex >= snapPoints.length) activeIndex = snapPoints.length - 1;
+        var point = -snapPoints[activeIndex];
+        isAnimating = true;
         $(container).animate({
             scrollLeft: point
-        }, 400);
+        }, 400, function() {
+            setTimeout(function () {
+                isAnimating = false;
+            }, scrollEndDelay * 3);
+        });
     };
     var scaleByPosition = function() {
+        if (!isMobileView) {
+            cards.forEach(function (card) {
+                var scale = 1;
+                card.style.webkitTransform = 'scale(' + scale + ')';
+                card.style.mozTransform = 'scale(' + scale + ')';
+                card.style.msTransform = 'scale(' + scale + ')';
+                card.style.oTransform = 'scale(' + scale + ')';
+                card.style.transform = 'scale(' + scale + ')';
+            });
+            return;
+        }
         cards.forEach(function (card) {
-            var scale = (1 - 0.05 * Math.abs(Utils.elementHorizontalOffset(card, true)));
-            card.style.webkitTransform = 'scale(' + scale + ')';
-            card.style.mozTransform = 'scale(' + scale + ')';
-            card.style.msTransform = 'scale(' + scale + ')';
-            card.style.oTransform = 'scale(' + scale + ')';
-            card.style.transform = 'scale(' + scale + ')';
+            if (Utils.isElementInHorizontalView(card, container)) {
+                var scale = (1 - 0.05 * Math.abs(Utils.elementHorizontalOffset(card, true)));
+                card.style.webkitTransform = 'scale(' + scale + ')';
+                card.style.mozTransform = 'scale(' + scale + ')';
+                card.style.msTransform = 'scale(' + scale + ')';
+                card.style.oTransform = 'scale(' + scale + ')';
+                card.style.transform = 'scale(' + scale + ')';
+            }
         });
+    };
+    var checkMobileView = function() {
+        isMobileView = window.innerWidth <= 992;
+        console.log(isMobileView);
     };
 
     container.addEventListener('scroll', function() {
-        scaleByPosition();
+        var sl = container.scrollLeft;
+        var direction =  (sl < lastContainerLeft) ? 'left' : 'right';
         if(timer !== null) {
             clearTimeout(timer);
         }
         timer = setTimeout(function() {
-            $(container).trigger('scrollend', []);
-        }, 66);
+            $(container).trigger('scrollend', [direction]);
+        }, scrollEndDelay);
+        lastContainerLeft = sl;
     }, false);
-
-    $(container).on('scrollend', function() {
-        snapToCenter();
+    container.addEventListener('scroll', function() {
+        scaleByPosition();
+    });
+    window.addEventListener('resize', function() {
+        checkMobileView();
+        getSnapPoints();
+        scaleByPosition();
     });
 
+    $(container).on('scrollend', function(e, direction) {
+        if (Globals.servicesSection.isSnapOnScroll && !isAnimating) {
+            snapToCenter(direction);
+        }
+    });
+
+    checkMobileView();
+    getSnapPoints();
     scaleByPosition();
 
 })();

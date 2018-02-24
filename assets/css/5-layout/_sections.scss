@@ -324,6 +324,7 @@
     transform: translateY(100px);
   }
   &.already-shown {
+
     animation: fadein-bottom 500ms 100ms ease-in-out both;
     &.appeared-from-top {
       animation: fadein-top 500ms 100ms ease-in-out both;

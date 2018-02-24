@@ -17,6 +17,16 @@ Utils.prototype = {
             return elemTop < window.innerHeight - offsetBottom && elemBottom >= offsetTop;
         }
     },
+    isElementInHorizontalView: function(element, container, fullyInView) {
+        var rect = element.getBoundingClientRect();
+        var elemLeft = rect.left;
+        var elemRight = rect.right;
+        if (fullyInView === true) {
+            return (elemLeft >= 0) && (elemRight <= container.offsetWidth);
+        } else {
+            return elemLeft < container.offsetWidth && elemRight >= 0;
+        }
+    },
     elementHorizontalOffset: function (element, percentage) {
         var rect = element.getBoundingClientRect();
         var elemMiddle = rect.left + rect.width/2;
