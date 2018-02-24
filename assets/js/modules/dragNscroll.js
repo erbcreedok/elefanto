@@ -1,5 +1,6 @@
 (function() {
 
+    // Gloabal Variables
     var container = document.getElementsByClassName('tab-cards-container').item(0);
     var cards = [].slice.call(container.children);
     if (!container) return;
@@ -8,9 +9,13 @@
     var activeIndex = 0;
     var lastContainerLeft = 0;
     var isAnimating = false;
-    var scrollEndDelay = 66;
+    var scrollEndDelay = 100;
     var isMobileView = false;
+    var scrollDirection = '';
+    var isTouching = false;
+    var isTouchScroll = false;
 
+    // Global Functions
     var getSnapPoints = function () {
         if (!isMobileView) return;
         var p = [];
@@ -20,19 +25,29 @@
         });
         snapPoints = p;
     };
-    var snapToCenter = function(direction) {
+    var snapToCenter = function() {
         if (!isMobileView) return;
-        activeIndex += direction==='left' ? -1 : direction==='right' ? 1 : 0;
-        if (activeIndex <= 0) activeIndex = 0;
-        if (activeIndex >= snapPoints.length - 1) activeIndex = snapPoints.length - 1;
+
+        var scrollPoint = container.scrollLeft;
+        var minDelta = 99999;
+
+        snapPoints.forEach(function(snapPoint, i) {
+            if (scrollDirection === 'left' && scrollPoint + snapPoint < 0 )return;
+            if (scrollDirection === 'right' && scrollPoint + snapPoint > 0 )return;
+            if (Math.abs(scrollPoint + snapPoint ) < minDelta) {
+                activeIndex = i;
+                minDelta = Math.abs(scrollPoint + snapPoints[activeIndex]);
+            }
+        });
         var point = -snapPoints[activeIndex];
+
         isAnimating = true;
         $(container).animate({
             scrollLeft: point
         }, 400, function() {
             setTimeout(function () {
                 isAnimating = false;
-            }, scrollEndDelay * 3);
+            }, scrollEndDelay + 500);
         });
     };
     var scaleByPosition = function() {
@@ -60,18 +75,33 @@
     };
     var checkMobileView = function() {
         isMobileView = window.innerWidth <= 992;
-        console.log(isMobileView);
     };
-
-    container.addEventListener('scroll', function() {
-        var sl = container.scrollLeft;
-        var direction =  (sl < lastContainerLeft) ? 'left' : 'right';
+    var setScrollEndTimer = function() {
         if(timer !== null) {
             clearTimeout(timer);
         }
         timer = setTimeout(function() {
-            $(container).trigger('scrollend', [direction]);
+            $(container).trigger('scrollend');
         }, scrollEndDelay);
+    };
+
+
+    // Setup Functions;
+    checkMobileView();
+    getSnapPoints();
+    scaleByPosition();
+
+
+    // Event Listeners
+    container.addEventListener('scroll', function() {
+        var sl = container.scrollLeft;
+        scrollDirection =  (sl < lastContainerLeft) ? 'left' : 'right';
+
+        if (!isTouching) {
+            setScrollEndTimer();
+        } else {
+            isTouchScroll = true;
+        }
         lastContainerLeft = sl;
     }, false);
     container.addEventListener('scroll', function() {
@@ -82,17 +112,19 @@
         getSnapPoints();
         scaleByPosition();
     });
-
-    $(container).on('scrollend', function(e, direction) {
-        if (Globals.servicesSection.isSnapOnScroll && !isAnimating) {
-            if (!(direction==='left' && activeIndex<=0) && !(direction==='right' && activeIndex>=snapPoints.length - 1)) {
-                snapToCenter(direction);
-            }
+    $(container).on('touchstart', function() {
+        isTouching = true;
+    });
+    Utils.listenEvents(container, 'touchend touchcancel', function () {
+        isTouching = false;
+        if (isTouchScroll) {
+            isTouchScroll = false;
+            $(container).trigger('scrollend');
         }
     });
-
-    checkMobileView();
-    getSnapPoints();
-    scaleByPosition();
-
+    $(container).on('scrollend', function() {
+        if (Globals.servicesSection.isSnapOnScroll && !isAnimating) {
+            snapToCenter();
+        }
+    });
 })();
