@@ -1,7 +1,7 @@
 .first-section {
   font-size: 1.6rem;
   line-height: 2rem;
-  background: url($path-image + "/main.jpg") center -4rem;
+  background:  #963a4b url($path-image + "/main.jpg") center -4rem;
   .heading-container {
     max-width: 53.8rem;
     min-height: 31.7rem;
@@ -274,8 +274,6 @@
     }
   }
   form.submitting {
-    pointer-events: none;
-    cursor: wait;
     .progress-circle-svg {
       .progress-circle-rail {
         stroke: transparent;
@@ -299,23 +297,6 @@
 .ninth-section {
   font-size: 1.6rem;
   display: none;
-  .big {
-    font-size: 2.4rem;
-  }
-  svg g {
-    fill: transparent;
-    stroke: $red;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 300;
-    transition: stroke-dasharray .5s 1s, stroke-dashoffset 1.5s, fill .2s 1.3s ease-in-out;
-  }
-  &.already-shown {
-    svg g {
-      stroke-dasharray: 0;
-      stroke-dashoffset: 0;
-      fill: $red;
-    }
-  }
 }
 
 .check-on-scroll {

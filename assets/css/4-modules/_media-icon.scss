@@ -1,0 +1,27 @@
+.media-icon {
+  @extend .d-flex;
+  .icon-square {
+    margin: 0.2rem 1.5rem 0.1rem 0.1rem;
+  }
+  p {
+    max-width: 20rem;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
+.media-icons-wrapper {
+  .media-icon {
+    margin-bottom: 3.7rem;
+    padding-right: .5rem;
+  }
+}
+.icon-square {
+  height: 4.9rem;
+  width: 4.9rem;
+  @include prefix((border-radius: 0.4rem), webkit moz);
+  background: #ffffff;
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .align-items-center;
+  font-size: 1.8rem;
+}

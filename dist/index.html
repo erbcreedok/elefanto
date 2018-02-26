@@ -215,7 +215,7 @@
                   </ol>
                   <div class="d-sm-flex ">
                   <p class="gray-color text-center mb-5 mb-sm-0 text-sm-left">Если у вас есть такие сложности, <span class="medium darkblue-color">оставьте заявку на бесплатную консультацию</span> и получите четкую инструкцию по решению своих задач. Будем рады оказаться вам максимально полезными.</p>
-                  <button class="btn btn-primary d-block">
+                  <button class="btn btn-primary d-block" data-toggle="modal" data-target="#callbackModal">
                       <span>Получить решение</span>
                   </button>
               </div>
@@ -359,7 +359,7 @@
                           </div>
                       </div>
                   </div>
-                  <button class="btn btn-primary d-block mx-auto mx-md-0">
+                  <button class="btn btn-primary d-block mx-auto mx-md-0" data-toggle="modal" data-target="#callbackModal">
                       <span>Получить консультацию</span>
                   </button>
               </div>
@@ -476,7 +476,9 @@
                       </div>
                   </div>
                   <p style="margin-bottom: 1.7rem" class="text-center text-md-left">
-                      <a href="#" class="red-color medium unstyled">Начать с нами проект    <span class="icomoon icon-arrow-right"></span></a>
+                      <a href="#" class="red-color medium unstyled" data-toggle="modal" data-target="#callbackModal">
+                          Начать проект с нами     <span class="icomoon icon-arrow-right"></span>
+                      </a>
                   </p>
               </div>
           </section>
@@ -538,7 +540,7 @@
                       </div>
                   </div>
                   <div class="d-flex justify-content-center">
-                      <button class="btn btn-primary">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#callbackModal">
                           Начать работать
                       </button>
                   </div>
@@ -731,7 +733,7 @@
           </section>
           <section class="rounded-box section-padding ninth-section">
               <div class="section-container d-flex justify-content-center">
-                  <div class="row align-items-center">
+                  <div class="row align-items-center callback-success-message">
                       <div class="col-sm-4 col-md-5">
                           <svg width="100%" height="200px" viewBox="0 0 288 288">
                               <g id="checked" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
@@ -799,6 +801,70 @@
                   </ul>
               </div>
           </footer>
+      </div>
+  </div>
+  <div class="modal fade" id="callbackModal">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <button type="button" class="modal-close-times" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="times"></span>
+              </button>
+              <div class="modal-body modal-body-form-inputs">
+                  <h3>Оставьте свои контакты и получите бесплатную консультацию</h3>
+                  <form id="form-callback-modal" class="form-wrapper mt-5 p-1 pt-4">
+                      <div class="form-group row mt-5">
+                          <div class="input-group col-lg-6">
+                              <label for="modal-form-name">Имя</label>
+                              <input type="text" autocomplete="given-name" required name="name" id="modal-form-name" placeholder="Александра"/>
+                          </div>
+                          <div class="input-group col-lg-6">
+                              <label for="modal-form-surname">Фамилия</label>
+                              <input type="text" autocomplete="family-name" required name="surname" id="modal-form-surname" placeholder="Винокурова"/>
+                          </div>
+                          <div class="input-group col-lg-6">
+                              <label for="modal-form-email">Адрес почты</label>
+                              <input type="email" autocomplete="email" name="email" required id="modal-form-email" placeholder="пример@gmail.com"/>
+                          </div>
+                          <div class="input-group col-lg-6">
+                              <label for="modal-form-phone">Номер телефона</label>
+                              <input type="tel" autocomplete="tel-national" required name="phone" id="modal-form-phone" placeholder="+7 (702) 502 62 85"/>
+                          </div>
+                          <div class="input-group col-12">
+                              <label for="modal-form-message">Сообщение</label>
+                              <input name="message" id="modal-form-message" placeholder="Ваши пожелания, требования сроки и другое"/>
+                          </div>
+                      </div>
+                      <div class="row m-0 pt-5">
+                          <button type="submit" class="btn btn-primary mx-auto mt-3 mb-2">
+                              <span>Отправить</span>
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-body modal-body-form-success" style="display: none;">
+                  <div class="row align-items-center callback-success-message">
+                      <div class="col-sm-4">
+                          <svg width="100%" height="200px" viewBox="0 0 288 288">
+                              <g id="checked" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+                                  <path d="M143.031,0 C64.027,0 0.004,64.04 0.004,143.027 C0.004,222.023 64.035,286.054 143.031,286.054 C222.018,286.054 286.049,222.023 286.049,143.027 C286.049,64.049 222.018,0 143.031,0 Z M143.031,259.236 C78.848,259.236 26.822,207.21 26.822,143.027 C26.822,78.844 78.857,26.818 143.031,26.818 C207.205,26.818 259.231,78.844 259.231,143.027 C259.231,207.21 207.206,259.236 143.031,259.236 Z M199.241,82.187 C193.162,78.558 185.394,80.712 181.899,87.014 L133.94,173.161 L107.23,140.649 C102.394,135.08 95.967,132.193 89.897,135.822 C83.818,139.46 81.306,148.212 85.24,153.826 L122.409,199.067 C125.189,202.678 128.362,204.842 131.679,205.459 L131.706,205.513 L132.046,205.531 C132.797,205.647 144.025,207.721 148.861,199.068 L203.909,100.192 C207.402,93.879 205.32,85.825 199.241,82.187 Z" id="Shape"></path>
+                              </g>
+                          </svg>
+                      </div>
+                      <div class="col-sm-8 d-flex justify-content-center justify-content-sm-start mt-5 mt-sm-0">
+                          <div class="">
+                              <p class="big mb-5"><span class="heavy">Отправлено</span></p>
+                              <p><span class="bold">Спасибо</span> за заявку, <span class="name-here"></span><br>Мы скоро вам <span class="red-color">перезвоним</span> :)</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row m-0">
+                      <button type="button" class="btn btn-primary mx-auto mt-5" data-dismiss="modal">
+                          <span>Закрыть</span>
+                      </button>
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
 

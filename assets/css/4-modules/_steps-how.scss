@@ -1,0 +1,102 @@
+.steps-how-wrapper {
+  align-items: flex-start;
+  position: relative;
+  p {
+    margin: 0;
+  }
+  .steps-how {
+    width: 50%;
+    opacity: 1;
+    position: relative;
+    z-index:2;
+    height: 17.8rem;
+    &:nth-child(3) {
+      order: 4
+    }
+    &:nth-child(4) {
+      order: 3;
+    }
+  }
+  .steps-how-container {
+    width: 18.3rem;
+  }
+  .steps-how-num {
+    font-size: 4.8rem;
+    line-height: 4.6rem;
+    font-weight: 900;
+    color: $pink;
+    text-align: center;
+    position: relative;
+  }
+  .steps-how-circle {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    padding: 1px;
+    border: 3px solid $red;
+    margin: 0 auto 1.5rem;
+    background: #ffffff;
+    @include prefix((border-radius: 50%, box-shadow: 0 0 0 3px #ffffff), webkit moz);
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $red;
+      @include prefix((border-radius: inherit), webkit moz);
+    }
+  }
+  .steps-how-title {
+    text-align: center;
+    line-height: 1.4rem;
+    color: $darkblue;
+  }
+  .steps-how-path {
+    top: 5.8rem;
+    left: 8.5rem;
+    bottom: 0;
+    position: absolute;
+    z-index:1;
+    right: 0;
+    overflow: hidden;
+    svg {
+      right: 0;
+      position: absolute;
+    }
+    .line-mask {
+      stroke: white;
+      stroke-width: 5;
+    }
+    .main-line {
+      stroke: $red;
+      stroke-dasharray: 13 13 13;
+    }
+    .line-mask {
+      stroke-dasharray: 1100;
+      stroke-dashoffset: -1100;
+    }
+  }
+  &.animation-start {
+    $path-duration: 2s;
+    $station-duration: .2s;
+    .steps-how-path .line-mask{
+      animation: shorten-path $path-duration .5s cubic-bezier(0, 0.45, 1, 0.55) both;
+    }
+    .steps-how:nth-child(1) {
+      animation: fadein $station-duration $station-duration ease-in both;
+    }
+    .steps-how:nth-child(2) {
+      animation: fadein $station-duration ($path-duration * 0.3333) ease-in both;
+    }
+    .steps-how:nth-child(3) {
+      animation: fadein $station-duration $path-duration ease-in both;
+    }
+    .steps-how:nth-child(4) {
+      animation: fadein $station-duration ($path-duration + .5s) linear both;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    @include steps-how-mobile();
+  }
+}

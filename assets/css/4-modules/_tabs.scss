@@ -1,0 +1,77 @@
+.tabs-container {
+  @extend ul.unstyled;
+  position: relative;
+  .tab-underline {
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    background: #f13453;
+    margin: 0;
+    left: 0;
+    @include prefix((transition: 200ms ease-in), webkit moz ms o);
+  }
+}
+.tab {
+  @include tab-heading();
+  border-bottom: 2px solid #E7E7E7;
+  padding: 0 1rem;
+  cursor: pointer;
+  &.active {
+    border-color: $red;
+  }
+
+}
+.tab-heading {
+  @include tab-heading;
+}
+
+.tab-cards-wrapper {
+  @include media-breakpoint-down(sm) {
+    @include tab-cards-wrapper-mobile();
+  }
+}
+.tab-cards-container {
+  position: relative;
+  .tab-card {
+    display: none;
+    &.active {
+      display: block;
+      position: relative;
+      z-index:2;
+    }
+    &.next {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right:0;
+      z-index: 3;
+      background: white;
+      opacity: 0;
+      animation: fadein-right 200ms 50ms forwards ease-in;
+      &.reverse {
+        @include prefix((animation-name: fadein-left), webkit moz o)
+      }
+    }
+    &.prev {
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: fadeout-left 200ms forwards ease-out;
+      &.reverse {
+        @include prefix((animation-name: fadeout-right), webkit moz o)
+      }
+    }
+  }
+  .tab-card-body {
+    @include d-flex();
+    @include media-breakpoint-up(md) {
+      @include justify-content-between();
+    }
+  }
+}
+.tab-card {
+  @include media-breakpoint-down(sm) {
+    @include tab-card-mobile();
+  }
+}

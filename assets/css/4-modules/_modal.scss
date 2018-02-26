@@ -1,0 +1,11 @@
+@include media-breakpoint-down(xs) {
+  body.modal-open {
+    .main-container {
+      display: none;
+    }
+    .modal {
+      position: absolute;
+      top:0;
+    }
+  }
+}

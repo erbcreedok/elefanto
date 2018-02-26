@@ -19,6 +19,7 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 var Globals = {
     botApi: '532328576:AAHwXhShNWR-MNw-TDBuJe1TNnfvWj-Yd48',
     chatId: '-306772855',
+    // chatId: '254410503',
     sendOnSubmit: true,
     servicesSection: {
         isSnapOnScroll: true
@@ -68,7 +69,7 @@ Utils.prototype = {
             element.classList.remove('typewriter-cursor-blink');
             element.innerHTML += txt.charAt(i);
             i++;
-            var deltaSpeed = (Math.random() * 10 + 0.2 ) * speed;
+            var deltaSpeed = (Math.random() * 3 + 0.2 ) * speed;
             setTimeout(this.typeWriter.bind(this, element, i, txt, speed), deltaSpeed );
         }
         else {
@@ -218,12 +219,12 @@ Utils.prototype = {
     textifyJson: function (arr) {
         var message = '💡Новая заявка от ';
         message += '👤<b>' + arr.name + ' ' + arr.surname + '</b>';
-        message += '\n    <i> Телефон: </i> ' + arr.phone;
-        message += '\n    <i> Почта: </i> ' + arr.email;
-        message += '\n    <i> Тип проекта: </i> ' + arr.type;
-        message += arr.platform !=='' ? '\n    <i> Платформа: </i> ' + arr.platform : '';
-        message += arr.when     !=='' ? '\n    <i> Когда: </i> ' + arr.when : '';
-        message += arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
+        message += arr.phone    === undefined ? '' : arr.phone    !=='' ? '\n    <i> Телефон: </i> ' + arr.phone : '';
+        message += arr.email    === undefined ? '' : arr.email    !=='' ? '\n    <i> Почта: </i> ' + arr.email : '';
+        message += arr.type     === undefined ? '' : arr.type     !=='' ? '\n    <i> Тип проекта: </i> ' + arr.type : '';
+        message += arr.platform === undefined ? '' : arr.platform !=='' ? '\n    <i> Платформа: </i> ' + arr.platform : '';
+        message += arr.when     === undefined ? '' : arr.when     !=='' ? '\n    <i> Когда: </i> ' + arr.when : '';
+        message += arr.message  === undefined ? '' : arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
         return encodeURIComponent(message);
     },
     onChangeTab: function(element) {
@@ -459,7 +460,7 @@ $(document).ready(function() {
         if (!isMobileView) return;
         var p = [];
         cards.forEach(function(card) {
-            var point = Utils.elementHorizontalOffset(card);
+            var point = Utils.elementHorizontalOffset(card) - container.scrollLeft;
             p.push(point);
         });
         snapPoints = p;
@@ -479,14 +480,16 @@ $(document).ready(function() {
             }
         });
         var point = -snapPoints[activeIndex];
-
+        snapToPoint(point);
+    };
+    var snapToPoint = function(point) {
         isAnimating = true;
         $(container).animate({
             scrollLeft: point
         }, 400, function() {
             setTimeout(function () {
                 isAnimating = false;
-            }, scrollEndDelay + 500);
+            }, scrollEndDelay + 10);
         });
     };
     var scaleByPosition = function() {
@@ -566,17 +569,97 @@ $(document).ready(function() {
             snapToCenter();
         }
     });
+
+    // $(cards).on('click touch', function(e) {
+    //     var indexOfCard = cards.indexOf(this);
+    //     if (activeIndex === indexOfCard) return;
+    //     console.log(e);
+    //     activeIndex = indexOfCard;
+    //     var point = -snapPoints[activeIndex];
+    //     snapToPoint(point)
+    // });
+
 })();
 
 $( document ).ready(function() {
 
     var callbackForm = document.getElementById('form-callback');
+    var callbackFormModal = document.getElementById('form-callback-modal');
 
     // Typewriter activate
     $('.typewriter-effect[data-typewriter=main-heading-3]').on('onTypewriterFinish', function(){
         $('#main-subheader').addClass('fadein-bottom');
     });
 
+
+    var onEighthSectionFormDataSend = function(data) {
+        var eigth = document.getElementsByClassName('eighth-section').item(0);
+        var ninth = document.getElementsByClassName('ninth-section').item(0);
+        eigth.classList.add('fadeout-top');
+        ninth.getElementsByClassName('name-here').item(0).innerHTML = data.name;
+        var animationEnd = function() {
+            eigth.style.display = 'none';
+            ninth.style.display = 'block';
+            setTimeout(function(){
+                ninth.classList.add('already-shown');
+            },10);
+            eigth.removeEventListener('animationend', animationEnd);
+        };
+        eigth.addEventListener('animationend', animationEnd);
+    };
+    var onCallbackFormModalDataSend = function(form ,data) {
+        var modalFormInputs = Utils.findParent(form, 'modal-body');
+        var modalFormSuccess = modalFormInputs.nextElementSibling;
+        var modalItSelf = Utils.findParent(modalFormInputs, 'modal');
+        modalFormSuccess.getElementsByClassName('name-here').item(0).innerHTML = data.name;
+        modalFormInputs.classList.add('fadeout-top');
+        var animationEnd = function() {
+            modalFormInputs.style.display = 'none';
+            modalFormSuccess.style.display = 'block';
+            setTimeout(function () {
+                modalFormSuccess.classList.add('already-shown');
+            }, 10);
+            setTimeout(function() {
+                $(modalItSelf).modal('hide');
+            }, 5000);
+        };
+        modalFormInputs.addEventListener('animationend', animationEnd);
+        console.log(modalFormInputs, modalFormSuccess, data);
+    };
+    var onCallbackFormSubmit = function(event) {
+        event.preventDefault();
+
+        var form = this;
+        var buttonSubmit = form.querySelector('button[type=submit]');
+        var buttonSubmitSpan = buttonSubmit.getElementsByTagName('span').item(0);
+        var data = Utils.serializeJson($(form).serializeArray());
+        var message = Utils.textifyJson(data);
+        var src = 'https://api.telegram.org/bot' + Globals.botApi + '/sendMessage?chat_id=' + Globals.chatId + '&parse_mode=html&text=' + message;
+        var xhttp = new XMLHttpRequest();
+
+        form.classList.add('submitting');
+        buttonSubmitSpan.innerHTML = 'Отправляем...';
+
+        var onMessageSend = function() {
+            $(form).trigger('message-send',[data]);
+        };
+
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                onMessageSend();
+            }
+        };
+        xhttp.open("GET", src, true);
+
+        if (Globals.sendOnSubmit) {
+            xhttp.send();
+        } else {
+            setTimeout(onMessageSend, 1500);
+        }
+
+        return false;
+    };
 
     // Form progress check
     $(callbackForm).on('change propertychange click input keyup paste', function() {
@@ -609,56 +692,19 @@ $( document ).ready(function() {
 
         if (canSubmit) {
             buttonSubmit.removeAttribute('disabled');
-            Utils.growNumber(progressPercent, percentShown, 100, 1000 / Math.abs(100 - percentShown));
+            Utils.growNumber(progressPercent, percentShown, 100, 1000 / (100 - percentShown));
         } else {
             buttonSubmit.setAttribute('disabled','');
             Utils.growNumber(progressPercent, percentShown, percentOld, 1000 / Math.abs(percentOld - percentShown));
         }
     });
-    $(callbackForm).on('submit', function(event) {
-        event.preventDefault();
-
-        var buttonSubmit = callbackForm.querySelector('button[type=submit]');
-        var buttonSubmitSpan = buttonSubmit.getElementsByTagName('span').item(0)
-        var data = Utils.serializeJson($(callbackForm).serializeArray());
-        var message = Utils.textifyJson(data);
-        var src = 'https://api.telegram.org/bot' + Globals.botApi + '/sendMessage?chat_id=' + Globals.chatId + '&parse_mode=html&text=' + message;
-        var xhttp = new XMLHttpRequest();
-
-        callbackForm.classList.add('submitting');
-        buttonSubmitSpan.innerHTML = 'Отправляем...';
-
-        var onMessageSend = function() {
-            var eigth = document.getElementsByClassName('eighth-section').item(0);
-            var ninth = document.getElementsByClassName('ninth-section').item(0);
-            eigth.classList.add('fadeout-top');
-            ninth.getElementsByClassName('name-here').item(0).innerHTML = data.name;
-            var animationEnd = function() {
-                eigth.style.display = 'none';
-                ninth.style.display = 'block';
-                setTimeout(function(){
-                    ninth.classList.add('already-shown');
-                },10);
-                eigth.removeEventListener('animationend', animationEnd);
-            };
-            eigth.addEventListener('animationend', animationEnd);
-        };
-
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                onMessageSend();
-            }
-        };
-        xhttp.open("GET", src, true);
-
-        if (Globals.sendOnSubmit) {
-            xhttp.send();
-        } else {
-            setTimeout(onMessageSend, 3000);
-        }
-
-        return false;
+    $(callbackForm).on('submit', onCallbackFormSubmit);
+    $(callbackFormModal).on('submit', onCallbackFormSubmit);
+    $(callbackForm).on('message-send', function(e, data) {
+        onEighthSectionFormDataSend(data);
+    });
+    $(callbackFormModal).on('message-send', function(e, data) {
+        onCallbackFormModalDataSend(this, data);
     });
 
 });

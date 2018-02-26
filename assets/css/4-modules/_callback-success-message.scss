@@ -1,0 +1,21 @@
+.callback-success-message {
+  .big {
+    font-size: 2.4rem;
+  }
+  svg g {
+    fill: transparent;
+    stroke: $red;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 300;
+    transition: stroke-dasharray .5s 1s, stroke-dashoffset 1.5s, fill .2s 1.3s ease-in-out;
+  }
+}
+.already-shown {
+  .callback-success-message{
+    svg g {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      fill: $red;
+    }
+  }
+}

@@ -42,7 +42,7 @@ Utils.prototype = {
             element.classList.remove('typewriter-cursor-blink');
             element.innerHTML += txt.charAt(i);
             i++;
-            var deltaSpeed = (Math.random() * 10 + 0.2 ) * speed;
+            var deltaSpeed = (Math.random() * 3 + 0.2 ) * speed;
             setTimeout(this.typeWriter.bind(this, element, i, txt, speed), deltaSpeed );
         }
         else {
@@ -192,12 +192,12 @@ Utils.prototype = {
     textifyJson: function (arr) {
         var message = '💡Новая заявка от ';
         message += '👤<b>' + arr.name + ' ' + arr.surname + '</b>';
-        message += '\n    <i> Телефон: </i> ' + arr.phone;
-        message += '\n    <i> Почта: </i> ' + arr.email;
-        message += '\n    <i> Тип проекта: </i> ' + arr.type;
-        message += arr.platform !=='' ? '\n    <i> Платформа: </i> ' + arr.platform : '';
-        message += arr.when     !=='' ? '\n    <i> Когда: </i> ' + arr.when : '';
-        message += arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
+        message += arr.phone    === undefined ? '' : arr.phone    !=='' ? '\n    <i> Телефон: </i> ' + arr.phone : '';
+        message += arr.email    === undefined ? '' : arr.email    !=='' ? '\n    <i> Почта: </i> ' + arr.email : '';
+        message += arr.type     === undefined ? '' : arr.type     !=='' ? '\n    <i> Тип проекта: </i> ' + arr.type : '';
+        message += arr.platform === undefined ? '' : arr.platform !=='' ? '\n    <i> Платформа: </i> ' + arr.platform : '';
+        message += arr.when     === undefined ? '' : arr.when     !=='' ? '\n    <i> Когда: </i> ' + arr.when : '';
+        message += arr.message  === undefined ? '' : arr.message  !=='' ? '\n    <i> Дополнительно: </i> ' + arr.message : '';
         return encodeURIComponent(message);
     },
     onChangeTab: function(element) {

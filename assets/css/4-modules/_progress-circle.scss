@@ -1,0 +1,147 @@
+.progress-circle {
+  $time: 500ms;
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top:0; left: 0; right: 0; bottom: 0;
+    border: 4px solid $lightergray;
+    @include prefix((border-radius: 50%), webkit moz);
+  }
+  .progress-circle-side {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      border: 5px solid $red;
+      @include prefix((border-radius: 50%, transform: rotate(-45deg)), webkit moz);
+    }
+  }
+  .progress-circle-left {
+    @extend .progress-circle-side;
+    left: 0;
+    &:before {
+      left: 0;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      @include prefix((transition: $time $time), webkit moz);
+    }
+  }
+  .progress-circle-right {
+    @extend .progress-circle-side;
+    right: 0;
+    &:before {
+      right: 0;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      @include prefix((transition: $time), webkit moz);
+    }
+  }
+
+  &.progress-circle-25 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(45deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(-45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-50 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(-45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-75 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(45deg)), webkit moz)
+    }
+  }
+  &.progress-circle-100 {
+    .progress-circle-right:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+    .progress-circle-left:before {
+      @include prefix((transform: rotate(135deg)), webkit moz)
+    }
+  }
+
+}
+.progress-circle-svg {
+  $time: 1s;
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .progress-circle-rail {
+      stroke: $lightergray;
+      @include prefix((transform: rotate(-90deg), transform-origin: center, transition: $time), webkit moz ms o );
+    }
+    .progress-circle-bar {
+      stroke: $red;
+      stroke-dasharray: 364;
+      stroke-dashoffset: 364;
+      @include prefix((transform: rotate(-90deg), transform-origin: center, transition: $time), webkit moz ms o );
+    }
+  }
+  &.progress-circle-0 {
+    .progress-circle-bar {
+      stroke-dashoffset: 364;
+    }
+    .progress-circle-percent {
+      opacity: .5;
+    }
+  }
+  &.progress-circle-25 .progress-circle-bar {
+    stroke-dashoffset: 273;
+  }
+  &.progress-circle-50 .progress-circle-bar {
+    stroke-dashoffset: 182;
+  }
+  &.progress-circle-75 .progress-circle-bar {
+    stroke-dashoffset: 91;
+  }
+  &.progress-circle-100 .progress-circle-bar {
+    stroke-dashoffset: 0;
+  }
+}
+.progress-circle-data {
+  color: $grey;
+  font-size: 1.2rem;
+  margin-top: 2.4rem;
+  p {
+    margin: 0;
+  }
+  .progress-circle-percent {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $red;
+    line-height: 1.5rem;
+    .progress-circle-percent-big {
+      font-size: 3rem;
+    }
+    .progress-circle-percent-small {
+      font-size: 1.4rem;
+    }
+  }
+}

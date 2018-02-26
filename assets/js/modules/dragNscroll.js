@@ -20,7 +20,7 @@
         if (!isMobileView) return;
         var p = [];
         cards.forEach(function(card) {
-            var point = Utils.elementHorizontalOffset(card);
+            var point = Utils.elementHorizontalOffset(card) - container.scrollLeft;
             p.push(point);
         });
         snapPoints = p;
@@ -40,14 +40,16 @@
             }
         });
         var point = -snapPoints[activeIndex];
-
+        snapToPoint(point);
+    };
+    var snapToPoint = function(point) {
         isAnimating = true;
         $(container).animate({
             scrollLeft: point
         }, 400, function() {
             setTimeout(function () {
                 isAnimating = false;
-            }, scrollEndDelay + 500);
+            }, scrollEndDelay + 10);
         });
     };
     var scaleByPosition = function() {
@@ -127,4 +129,14 @@
             snapToCenter();
         }
     });
+
+    // $(cards).on('click touch', function(e) {
+    //     var indexOfCard = cards.indexOf(this);
+    //     if (activeIndex === indexOfCard) return;
+    //     console.log(e);
+    //     activeIndex = indexOfCard;
+    //     var point = -snapPoints[activeIndex];
+    //     snapToPoint(point)
+    // });
+
 })();
